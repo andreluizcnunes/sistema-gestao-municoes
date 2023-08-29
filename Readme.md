@@ -12,3 +12,5 @@
 ## 📅Conograma
 <img src="./src/img/conograma.jpeg">
 
+## Itens obrigatórios do sistema
+<img src="./src/img/itens.jpeg">
