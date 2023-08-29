@@ -1,40 +1,53 @@
-# Escopo
+**Nome do Projeto:** Sistema Integrado de Gestão de Munições (SIGM)
 
-## Objetivo:
-Desenvolver uma aplicação de software para a gestão eficiente e segura de munições em um ambiente militar ou policial. A aplicação terá como objetivo principal acompanhar o estoque, distribuição, uso e manutenção das munições, contribuindo para a redução de riscos, o aumento da eficiência operacional e o cumprimento de regulamentações.
+**Objetivo:** Desenvolver um sistema abrangente para gerenciar o ciclo completo de munições, incluindo aquisição, estoque, distribuição e utilização, destinado a organizações que lidam com armamento e munições, como forças militares e agências de segurança.
 
-## Funcionalidades Principais:
+**Funcionalidades Principais:**
 
-### Registro de Munições: 
-Permitir o registro detalhado de cada tipo de munição, incluindo características físicas, número de série, lote e informações de fabricação.
+1. **Autenticação e Controle de Usuários:**
+   - Registro e autenticação de usuários com diferentes níveis de acesso (administrador, gerente, operador).
+   - Recuperação de senha e gestão de credenciais.
 
-### Controle de Estoque: 
-Manter um registro em tempo real do estoque de munições, possibilitando consultas e relatórios sobre quantidades disponíveis.
+2. **Gestão de Estoque:**
+   - Registro detalhado de diferentes tipos de munições, incluindo detalhes como calibre, lote, data de fabricação, data de validade, fornecedor, etc.
+   - Acompanhamento da quantidade atual de munições em estoque.
+   - Geração automática de alertas quando os níveis de estoque atingirem um limiar mínimo.
 
-### Rastreamento de Distribuição: 
-Registrar as saídas de munições do estoque, indicando data, quantidade, destino e finalidade. Isso inclui a capacidade de autorizar e registrar transferências entre unidades.
+3. **Compra de Munições:**
+   - Registro de pedidos de compra de munições.
+   - Integração com fornecedores para solicitar cotações e efetuar compras.
+   - Registro de informações relacionadas à compra, como fornecedor, quantidade, valor e data.
 
-### Manutenção e Inspeção: 
-Permitir agendar e registrar atividades de manutenção e inspeção das munições, garantindo sua qualidade e segurança ao longo do tempo.
+4. **Distribuição e Alocação de Munições:**
+   - Solicitação e autorização de pedidos de munições por parte de unidades/indivíduos.
+   - Rastreamento de quem recebeu munições e para qual finalidade.
+   - Alocação de munições para treinamento, operações, exercícios, etc.
 
-### Alertas de Prazo de Validade: 
-Emitir alertas quando as munições estiverem próximas do vencimento, ajudando a evitar o uso de munições obsoletas.
+5. **Rastreamento de Uso e Movimentação:**
+   - Registro de cada movimentação de munições, incluindo transferências entre unidades, devoluções, descartes, etc.
+   - Acompanhamento do uso efetivo em operações e treinamentos.
 
-### Relatórios de Uso e Estoque: 
-Gerar relatórios regulares sobre o uso, distribuição e status do estoque de munições para fins de monitoramento e tomada de decisões.
+6. **Relatórios e Análises:**
+   - Geração de relatórios detalhados sobre o estoque, histórico de movimentações e alocações.
+   - Análises de tendências de consumo e padrões de utilização.
 
-### Acesso Controlado: 
-Implementar um sistema de autenticação e autorização robusto para garantir que apenas pessoal autorizado possa acessar e operar a aplicação.
+7. **Segurança e Auditoria:**
+   - Auditoria detalhada de atividades dos usuários.
+   - Trilhas de auditoria para rastrear alterações de registros e ações críticas.
 
-### Rastreamento de Auditoria: 
-Registrar todas as atividades realizadas na aplicação, permitindo auditorias para garantir a conformidade e a responsabilização.
+**Exclusões (O que está fora do escopo):**
 
-### Limitações:
+1. **Manutenção de Armas e Equipamentos:**
+   - Manutenção de armas ou outros equipamentos não é contemplada neste sistema.
 
-A aplicação não gerenciará a produção de munições, focando apenas no controle após sua aquisição.
+2. **Treinamento de Usuários:**
+   - Treinamento para operar o sistema não faz parte do escopo.
 
-A aplicação não substituirá processos de regulamentação e segurança existentes, mas sim complementará esses processos.
+3. **Integrações Externas Complexas:**
+   - Integrações com sistemas externos muito complexos estão fora do escopo inicial.
 
-A aplicação não será responsável por aspectos de segurança física, como o armazenamento seguro das munições.
+**Tecnologias:**
+As tecnologias selecionadas serão escolhidas com base em requisitos de segurança, escalabilidade e usabilidade.
 
-Não haverá integração inicial com outros sistemas, como sistemas de RH ou sistemas de logística, mas a capacidade de integração pode ser considerada para futuras iterações.
+**Limitações:**
+O escopo pode ser ajustado ao longo do projeto para acomodar requisitos emergentes ou alterações nas necessidades da organização.
