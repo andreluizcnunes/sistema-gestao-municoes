@@ -32,12 +32,6 @@ O sistema deve permitir o registro das saídas de munições do estoque, indican
 
 Deve ser possível autorizar e registrar transferências entre unidades, com aprovações necessárias.
 
-## ➡️ Manutenção e Inspeção:
-
-O sistema deve permitir a programação de atividades de manutenção e inspeção para cada tipo de munição.
-
-Deve enviar notificações automáticas para a equipe responsável pelas atividades agendadas.
-
 ## ➡️ Alertas de Prazo de Validade:
 
 O sistema deve gerar alertas quando as munições estiverem a X dias de seu vencimento, permitindo ações preventivas.
@@ -48,7 +42,7 @@ O sistema deve gerar relatórios periódicos sobre o uso, distribuição e statu
 
 ## ➡️ Requisitos de Usabilidade:
 
-A interface da aplicação deve ser intuitiva e de fácil utilização, considerando a diversidade de usuários, incluindo pessoal militar e policial.
+A interface da aplicação deve ser intuitiva e de fácil utilização, considerando a diversidade de usuários.
 
 ## ➡️ Requisitos de Segurança:
 
@@ -59,10 +53,6 @@ O acesso a certas funcionalidades, como aprovações de transferência, deve ser
 ## ➡️ Requisitos de Desempenho:
 
 O sistema deve ser capaz de lidar com um grande número de registros de munições e transações de estoque de forma responsiva e eficiente.
-
-## ➡️ Requisitos de Integração:
-
-Embora não seja uma prioridade imediata, o sistema deve ser projetado com flexibilidade para permitir integração futura com outros sistemas, como sistemas de logística ou RH.
 
 ## ➡️ Requisitos de Auditoria:
 
