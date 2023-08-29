@@ -7,6 +7,9 @@
 <a href="./src/pages/requisitos.md">
     <button>➡️ Requisitos</button>
 </a>
+<a href="./src/pages/fluxograma.md">
+    <button>➡️ Fluxograma</button>
+</a>
 <hr>
 
 ## 📅Conograma
