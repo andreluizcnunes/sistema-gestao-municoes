@@ -12,7 +12,7 @@
 </a>
 <hr>
 
-## 📅Conograma
+## 📅Cronograma
 <img src="./src/img/conograma.jpeg">
 
 ## Itens obrigatórios do sistema
