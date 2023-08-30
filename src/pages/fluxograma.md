@@ -15,7 +15,7 @@
 # FluxoGrama
 
 ## Fluxograma resumido e básico
-<img src="../img/fluxo1.jpeg">
+<img src="../img/FluxoGeralBasico.jpg">
 <hr>
 
 ## Fluxograma Relatórios e Análises
