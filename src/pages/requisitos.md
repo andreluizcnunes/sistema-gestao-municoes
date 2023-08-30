@@ -4,6 +4,9 @@
 <a href="../../Readme.md">
     <button>➡️ Home</button>
 </a>
+<a href="./escopo.md">
+    <button>➡️ Escopo</button>
+</a>
 <a href="./fluxograma.md">
     <button>➡️ Fluxograma</button>
 </a>
