@@ -18,3 +18,7 @@
 ## Modelo Conceitual do Banco
 <img src="../img/modelo_conceitual.png">
 <hr>
+
+## Modelo Lógico do Banco
+<img src="../img/modelo_logico.png">
+<hr>
