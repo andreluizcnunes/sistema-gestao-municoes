@@ -10,7 +10,10 @@
 <a href="./requisitos.md">
     <button>➡️ Requisitos</button>
 </a>
-<hr
+<a href="./bancoDados.md">
+    <button>➡️ Banco de Dados</button>
+</a>
+<hr>
 
 # FluxoGrama
 

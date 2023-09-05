@@ -10,6 +10,9 @@
 <a href="./fluxograma.md">
     <button>➡️ Fluxograma</button>
 </a>
+<a href="./bancoDados.md">
+    <button>➡️ Banco de Dados</button>
+</a>
 <hr
 
 

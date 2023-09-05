@@ -10,6 +10,9 @@
 <a href="./src/pages/fluxograma.md">
     <button>➡️ Fluxograma</button>
 </a>
+<a href="./src/pages/bancoDados.md">
+    <button>➡️ Banco de Dados</button>
+</a>
 <hr>
 
 ## 📅Cronograma
