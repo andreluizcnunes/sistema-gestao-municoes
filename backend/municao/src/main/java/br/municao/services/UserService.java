@@ -91,7 +91,7 @@ public class UserService {
         // Exclui o usuário com base no ID fornecido
         usersRepository.deleteById(id);
         // Define uma mensagem de sucesso
-        smsResponse.setMensage("Usuario Deletado com sucesso.");
+        smsResponse.setMessage("Usuario Deletado com sucesso.");
         // Retorna uma resposta com status de sucesso
         return new ResponseEntity<SmsResponse>(smsResponse, HttpStatus.OK);
     }
@@ -107,21 +107,21 @@ public class UserService {
 
         if (user.getNome().equals("")){
             // Define uma mensagem de erro
-            smsResponse.setMensage("O nome é obrigatório");
+            smsResponse.setMessage("O nome é obrigatório");
             // Retorna uma resposta com status de erro
             return new ResponseEntity<SmsResponse>(smsResponse, HttpStatus.BAD_REQUEST);
 
         } else if (user.getEmail().equals("")) {
             // Verifica se o email do usuário está vazio
             // Define uma mensagem de erro
-            smsResponse.setMensage("O email é obrigatório");
+            smsResponse.setMessage("O email é obrigatório");
             // Retorna uma resposta com status de erro
             return new ResponseEntity<SmsResponse>(smsResponse, HttpStatus.BAD_REQUEST);
 
         } else if (user.getSenha().equals("")) {
             // Verifica se a senha do usuário está vazia
             // Define uma mensagem de erro
-            smsResponse.setMensage(("A senha é obrigatória"));
+            smsResponse.setMessage(("A senha é obrigatória"));
             // Retorna uma resposta com status de erro
             return new ResponseEntity<SmsResponse>(smsResponse, HttpStatus.BAD_REQUEST);
         }

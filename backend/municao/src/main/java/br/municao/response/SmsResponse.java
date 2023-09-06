@@ -9,5 +9,5 @@ import org.springframework.stereotype.Component;
 @Setter
 public class SmsResponse {
 
-    private String mensage;
+    private String message;
 }
