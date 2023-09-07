@@ -5,7 +5,6 @@ import br.municao.models.UserModel;
 import br.municao.response.SmsResponse;
 import br.municao.services.UserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
