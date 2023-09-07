@@ -34,7 +34,7 @@ public class FornecedorController {
      *
      * @return Uma lista de objetos FornecedorDTO que representam os fornecedores.
      */
-    @GetMapping("lista")
+    @GetMapping("/lista")
     public List<FornecedorDTO> getAllFornecedores(){
         return fornecedorService.getAllFornecedor();
     }
