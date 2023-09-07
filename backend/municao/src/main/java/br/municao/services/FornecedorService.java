@@ -39,7 +39,7 @@ public class FornecedorService {
      * @param newFornecedor O fornecedor a ser registrado.
      * @return ResponseEntity com o fornecedor registrado ou resposta de validação de erro.
      */
-    public  ResponseEntity<?> registerFornecedor(FornecedorModel newFornecedor){
+    public ResponseEntity<?> registerFornecedor(FornecedorModel newFornecedor){
 
         ResponseEntity<?> validationResponse = validateFields(newFornecedor);
         if(validationResponse != null){
@@ -84,7 +84,7 @@ public class FornecedorService {
     public ResponseEntity<SmsResponse> deleteFornecedor(Long id){
         fornecedorRepository.deleteById(id);
         smsResponse.setMessage("Fornecedor deletado com sucesso.");
-        return  new ResponseEntity<SmsResponse>(smsResponse, HttpStatus.OK);
+        return new ResponseEntity<SmsResponse>(smsResponse, HttpStatus.OK);
     }
 
     /**
