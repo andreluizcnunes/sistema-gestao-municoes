@@ -102,7 +102,7 @@ public class FornecedorService {
             return new ResponseEntity<SmsResponse>(smsResponse, HttpStatus.BAD_REQUEST);
 
         } else if (fornecedor.getCnpj().equals("")) {
-            // Verifica se o email do usuário está vazio
+            // Verifica se o cnpj do usuário está vazio
             // Define uma mensagem de erro
             smsResponse.setMessage("O campo 'cnpj' é obrigatório");
             // Retorna uma resposta com status de erro
