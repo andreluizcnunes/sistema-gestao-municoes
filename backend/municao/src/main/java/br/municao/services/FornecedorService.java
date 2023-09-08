@@ -2,7 +2,6 @@ package br.municao.services;
 
 import br.municao.dto.FornecedorDTO;
 import br.municao.models.FornecedorModel;
-import br.municao.models.UserModel;
 import br.municao.repositories.FornecedorRepository;
 import br.municao.response.SmsResponse;
 import org.springframework.beans.factory.annotation.Autowired;

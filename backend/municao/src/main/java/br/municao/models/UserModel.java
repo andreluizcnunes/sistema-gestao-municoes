@@ -1,13 +1,20 @@
 package br.municao.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.util.Date;
 
 /**
  * Esta classe representa um modelo de usuário no sistema.
  */
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "tb_users")
 public class UserModel {
 
@@ -18,6 +25,10 @@ public class UserModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private long id;
+
+    @CreatedDate
+    @Column(name = "data_cadastro")
+    private Date dataCadastro = new Date();
 
     /**
      * O nome do usuário.
