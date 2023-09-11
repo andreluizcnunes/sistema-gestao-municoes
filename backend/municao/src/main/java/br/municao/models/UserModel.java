@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -28,7 +29,7 @@ public class UserModel {
 
     @CreatedDate
     @Column(name = "data_cadastro")
-    private Date dataCadastro = new Date();
+    private LocalDate dataCadastro = LocalDate.now();
 
     /**
      * O nome do usuário.

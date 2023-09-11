@@ -2,6 +2,9 @@ package br.municao.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -12,6 +15,10 @@ public class PolicialModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private long id;
+
+    @CreatedDate
+    @Column(name = "data_cadastro")
+    private LocalDate dataCadastro = LocalDate.now();
 
     @Column(name = "nome", nullable = false)
     private String nome;
