@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -43,4 +44,7 @@ public class PolicialModel {
 
     @Column(name = "senha", nullable = false)
     private String senha;
+
+    @OneToMany(mappedBy = "policial")
+    private List<EmprestimoMunicaoModel> emprestimoMunicao;
 }

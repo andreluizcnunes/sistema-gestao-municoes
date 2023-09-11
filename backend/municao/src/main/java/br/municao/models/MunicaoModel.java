@@ -5,7 +5,6 @@ import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -40,4 +39,7 @@ public class MunicaoModel {
 
     @OneToMany(mappedBy = "municao")
     private List<EntradaMunicaoModel> entrada;
+
+    @OneToMany(mappedBy = "municao")
+    private List<EmprestimoMunicaoModel> emprestimoMunicao;
 }

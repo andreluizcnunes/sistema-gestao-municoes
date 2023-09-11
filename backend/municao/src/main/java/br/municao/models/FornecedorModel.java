@@ -50,4 +50,7 @@ public class FornecedorModel {
     @Column(name = "inscricao")
     private String inscricao;
 
+    @OneToMany(mappedBy = "fornecedor")
+    private List<EntradaMunicaoModel> entrada;
+
 }

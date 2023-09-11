@@ -8,8 +8,8 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-@Table(name = "tb_entrada_municao")
-public class EntradaMunicaoModel {
+@Table(name = "tb_emprestimo_municao")
+public class EmprestimoMunicaoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,14 +20,17 @@ public class EntradaMunicaoModel {
     @Column(name = "data_cadastro")
     private LocalDate dataCadastro = LocalDate.now();
 
-    @Column(name = "quantidade")
+    @Column(name = "quantidade", nullable = false)
     private Long quantidade;
+
+    @Column(name = "motivo_emprestimo", nullable = false)
+    private String motivoEmprestimo;
 
     @ManyToOne
     @JoinColumn(name = "id_municao")
     private MunicaoModel municao;
 
     @ManyToOne
-    @JoinColumn(name = "id_fornecedor")
-    private FornecedorModel fornecedor;
+    @JoinColumn(name = "id_policial")
+    private PolicialModel policial;
 }
