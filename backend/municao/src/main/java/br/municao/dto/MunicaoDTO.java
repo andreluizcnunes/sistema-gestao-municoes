@@ -1,7 +1,6 @@
 package br.municao.dto;
 
 import br.municao.models.MunicaoModel;
-import jakarta.persistence.Column;
 import lombok.Getter;
 
 @Getter
@@ -9,7 +8,7 @@ public class MunicaoDTO {
 
 
     private String nome;
-    private double calibre;
+    private String calibre;
     private double peso;
     private long quantidade;
 
