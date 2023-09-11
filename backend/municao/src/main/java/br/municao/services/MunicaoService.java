@@ -44,9 +44,14 @@ public class MunicaoService {
         return new ResponseEntity<MunicaoModel>(municaoRepository.save(newMunicao), HttpStatus.CREATED);
     }
 
-    public List<MunicaoDTO> getAllMunicao(){
+    public List<MunicaoDTO> getAllMunicaoDTO(){
         List<MunicaoModel> municao = municaoRepository.findAll();
         return municao.stream().map(x -> new MunicaoDTO(x)).toList();
+    }
+
+    public List<MunicaoModel> getAllMunicao(){
+       return municaoRepository.findAll();
+
     }
 
     public ResponseEntity<SmsResponse> deleteMunicao(Long id){
