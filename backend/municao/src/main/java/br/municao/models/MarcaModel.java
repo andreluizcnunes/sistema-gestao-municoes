@@ -2,6 +2,10 @@ package br.municao.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.LocalDate;
+import java.util.List;
 
 
 /**
@@ -17,12 +21,19 @@ public class MarcaModel {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "id_marca")
     private long id;
+
+    @CreatedDate
+    @Column(name = "data_cadastro")
+    private LocalDate dataCadastro = LocalDate.now();
 
     /**
      * O nome da Marca. Não pode ser nulo.
      */
-    @Column(name = "nome", nullable = false)
+    @Column(name = "nome_marca", nullable = false)
     private String nome;
+
+    @OneToMany(mappedBy = "marca")
+    private List<MunicaoModel> municoes;
 }
