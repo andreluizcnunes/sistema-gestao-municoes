@@ -18,8 +18,14 @@ public class MunicaoController {
         this.municaoService = municaoService;
     }
 
-    @GetMapping("/lista")
-    public List<MunicaoDTO> getAllMunicao(){return municaoService.getAllMunicao();}
+    @GetMapping("/listaDTO")
+    public List<MunicaoDTO> getAllMunicaoDTO(){return municaoService.getAllMunicaoDTO();}
+
+    @GetMapping("/listar")
+    public ResponseEntity<List<MunicaoModel>> getAllMunicao(){
+        List<MunicaoModel> municoes = municaoService.getAllMunicao();
+        return ResponseEntity.ok(municoes);
+    }
 
     @PostMapping("/cadastrar")
     public ResponseEntity<?> registerNewMunicao(@RequestBody MunicaoModel newMunicao){
