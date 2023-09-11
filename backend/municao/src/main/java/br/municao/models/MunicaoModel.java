@@ -41,5 +41,11 @@ public class MunicaoModel {
     private List<EntradaMunicaoModel> entrada;
 
     @OneToMany(mappedBy = "municao")
+    private List<SaidaMunicaoModel> saidaMunicao;
+
+    @OneToMany(mappedBy = "municao")
     private List<EmprestimoMunicaoModel> emprestimoMunicao;
+
+    @OneToOne(mappedBy = "municao")
+    private DevolucaoMunicaoPolicalModel devolucao;
 }

@@ -47,4 +47,7 @@ public class PolicialModel {
 
     @OneToMany(mappedBy = "policial")
     private List<EmprestimoMunicaoModel> emprestimoMunicao;
+
+    @OneToMany(mappedBy = "policial")
+    private List<DevolucaoMunicaoPolicalModel> devolucao;
 }

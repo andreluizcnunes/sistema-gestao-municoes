@@ -5,13 +5,11 @@ import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Data
-@Table(name = "tb_emprestimo_municao")
-public class EmprestimoMunicaoModel {
-
+@Table(name = "tb_saida_municao")
+public class SaidaMunicaoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -21,20 +19,13 @@ public class EmprestimoMunicaoModel {
     @Column(name = "data_cadastro")
     private LocalDate dataCadastro = LocalDate.now();
 
-    @Column(name = "quantidade", nullable = false)
+    @Column(name = "quantidade")
     private Long quantidade;
 
-    @Column(name = "motivo_emprestimo", nullable = false)
-    private String motivoEmprestimo;
+    @Column(name = "motivo_saida", nullable = false)
+    private String motivoSaida;
 
     @ManyToOne
     @JoinColumn(name = "id_municao")
     private MunicaoModel municao;
-
-    @ManyToOne
-    @JoinColumn(name = "id_policial")
-    private PolicialModel policial;
-
-    @OneToOne(mappedBy = "emprestimoMunicao")
-    private DevolucaoMunicaoPolicalModel devolucaoMunicaoPolical;
 }
