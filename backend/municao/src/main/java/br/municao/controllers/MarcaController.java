@@ -31,7 +31,7 @@ public class MarcaController {
      *
      * @return Uma lista de objetos MarcaDTO representando todas as marcas.
      */
-    @GetMapping("lsta")
+    @GetMapping("/listar")
     public List<MarcaDTO> getAllMarca(){
         return  marcaService.getAllMarca();
     }

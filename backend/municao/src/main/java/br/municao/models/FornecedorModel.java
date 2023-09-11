@@ -2,6 +2,10 @@ package br.municao.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.LocalDate;
+import java.util.List;
 
 /**
  * A classe FornecedorModel representa um fornecedor de produtos ou serviços.
@@ -19,6 +23,10 @@ public class FornecedorModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private long id;
+
+    @CreatedDate
+    @Column(name = "data_cadastro")
+    private LocalDate dataCadastro = LocalDate.now();
 
     /**
      * A razão social do fornecedor.
@@ -41,4 +49,5 @@ public class FornecedorModel {
      */
     @Column(name = "inscricao")
     private String inscricao;
+
 }
