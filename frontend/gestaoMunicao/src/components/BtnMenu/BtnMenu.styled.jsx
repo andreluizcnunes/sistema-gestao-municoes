@@ -25,4 +25,11 @@ export const CBotao = styled.a`
     img{
         width: 50%;
     }
+
+    @media screen and (max-width: 1400px) {
+        width: 7rem;
+        height: 7rem;
+
+        font-size: 1.2rem;
+    }
 `;

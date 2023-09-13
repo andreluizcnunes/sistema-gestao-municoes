@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import Login from "../pages/Login"
 import Dashboard from "../pages/Dashboard";
 import PainelFornecedor from "../pages/PainelFornecedor";
+import PainelFornecedorCadastro from "../pages/PainelFornecedorCadastro";
+import PainelFornecedorLista from "../pages/PainelFornecedorLista";
 
 function RoutesApp(){
     return(
@@ -10,6 +12,8 @@ function RoutesApp(){
             <Route path='/' element={<Login/>} />
             <Route path='/dashboard' element={<Dashboard/>} />
             <Route path='/fornecedor' element={<PainelFornecedor/>} />
+            <Route path='/fornecedor/cadastro' element={<PainelFornecedorCadastro/>} />
+            <Route path='/fornecedor/listar' element={<PainelFornecedorLista/>} />
         </Routes>
     );
 }

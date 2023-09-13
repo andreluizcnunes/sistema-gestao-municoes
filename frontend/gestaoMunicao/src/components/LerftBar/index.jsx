@@ -6,7 +6,7 @@ function LeftBar(){
             <a href="/dashboard">Lançamentos</a>
             <a href="/dashboard">Munições</a>
             <a href="/dashboard">Policiais</a>
-            <a href="/dashboard">Fornecedores</a>
+            <a href="/fornecedor">Fornecedores</a>
             <a href="/dashboard">Usuários</a>
         </CLeftBar>
     );

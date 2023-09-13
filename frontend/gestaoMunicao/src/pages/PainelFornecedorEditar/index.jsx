@@ -1,10 +1,19 @@
+import { CMain, ContentMain } from "./FornecedorEditar.styled"
+
+import LeftBar from "../../components/LerftBar";
+import TopBar from "../../components/TopBar";
+
+import HeaderFornecedor from "../PainelFornecedor/components/HeaderFornecedor";
+
 function PainelFornecedorEditar(){
     return(
-        <>
-            <h1>
-                Painel de Editar de Fornecedores
-            </h1>
-        </>
+        <CMain>
+            <TopBar/>
+            <ContentMain>
+                <LeftBar/>
+                <HeaderFornecedor titulo={"Editar Fornecedor"}/>
+            </ContentMain>
+        </CMain>
     );
 }
 

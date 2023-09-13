@@ -1,10 +1,19 @@
+import { CMain, ContentMain } from "./FornecedorLista.styled"
+
+import LeftBar from "../../components/LerftBar";
+import TopBar from "../../components/TopBar";
+
+import HeaderFornecedor from "../PainelFornecedor/components/HeaderFornecedor";
+
 function PainelFornecedorLista(){
     return(
-        <>
-            <h1>
-                Painel Lista de Fornecedores
-            </h1>
-        </>
+        <CMain>
+            <TopBar/>
+            <ContentMain>
+                <LeftBar/>
+                <HeaderFornecedor titulo={"Consultar Fornecedor"}/>
+            </ContentMain>
+        </CMain>
     );
 }
 
