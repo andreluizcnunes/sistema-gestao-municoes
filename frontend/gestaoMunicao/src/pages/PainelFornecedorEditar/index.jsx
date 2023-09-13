@@ -13,7 +13,7 @@ function PainelFornecedorEditar(){
             <ContentMain>
                 <LeftBar/>
                 <CSection>
-                    <HeaderFornecedor titulo={"Cadastro de Fornecedor"}/>
+                    <HeaderFornecedor titulo={"Editar Fornecedor"}/>
                     <FormFornecedor/>
                 </CSection>
             </ContentMain>
