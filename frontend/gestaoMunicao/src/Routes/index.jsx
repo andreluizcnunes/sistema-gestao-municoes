@@ -6,16 +6,20 @@ import PainelFornecedor from "../pages/PainelFornecedor";
 import PainelFornecedorCadastro from "../pages/PainelFornecedorCadastro";
 import PainelFornecedorLista from "../pages/PainelFornecedorLista";
 import PainelFornecedorEditar from "../pages/PainelFornecedorEditar";
+import PainelMarca from "../pages/PainelMarca";
 
 function RoutesApp(){
     return(
         <Routes>
             <Route path='/' element={<Login/>} />
             <Route path='/dashboard' element={<Dashboard/>} />
+
             <Route path='/fornecedor' element={<PainelFornecedor/>} />
             <Route path='/fornecedor/cadastro' element={<PainelFornecedorCadastro/>} />
             <Route path='/fornecedor/editar' element={<PainelFornecedorEditar/>} />
             <Route path='/fornecedor/listar' element={<PainelFornecedorLista/>} />
+
+            <Route path='/marca' element={<PainelMarca/>} />
         </Routes>
     );
 }
