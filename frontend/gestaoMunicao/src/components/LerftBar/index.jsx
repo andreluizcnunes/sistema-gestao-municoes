@@ -1,4 +1,4 @@
-import { CLeftBar } from "./CLeftBar.styled";
+import { CLeftBar } from "./LeftBar.styled";
 
 function LeftBar(){
     return(

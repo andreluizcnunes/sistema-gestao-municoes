@@ -13,6 +13,8 @@ export const CLeftBar = styled.div`
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.70);
 
     a{
+        width: 90%;
+        margin: 0 auto;
         text-decoration: none;
         background-color: #1E217C;
         color: #E0E0E0;
