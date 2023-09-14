@@ -8,6 +8,7 @@ import PainelFornecedorLista from "../pages/PainelFornecedorLista";
 import PainelFornecedorEditar from "../pages/PainelFornecedorEditar";
 import PainelMarca from "../pages/PainelMarca";
 import PainelMarcaCadastrar from "../pages/PainelMarcaCadastrar";
+import PainelMarcaEditar from "../pages/PainelMarcaEditar";
 
 function RoutesApp(){
     return(
@@ -22,6 +23,7 @@ function RoutesApp(){
 
             <Route path='/marca' element={<PainelMarca/>} />
             <Route path='/marca/cadastro' element={<PainelMarcaCadastrar/>} />
+            <Route path='/marca/editar' element={<PainelMarcaEditar/>} />
         </Routes>
     );
 }
