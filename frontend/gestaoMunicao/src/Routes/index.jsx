@@ -14,6 +14,7 @@ import PainelMunicao from "../pages/PainelMunicao";
 import PainelMunicaoCadastrar from "../pages/PainelMunicaoCadastrar";
 import PainelMunicaoLista from "../pages/PainelMunicaoLista";
 import PainelMunicaoEditar from "../pages/PainelMunicaoEditar";
+import PainelPolicial from "../pages/PainelPolicial";
 
 function RoutesApp(){
     return(
@@ -35,6 +36,11 @@ function RoutesApp(){
             <Route path='/municao/cadastro' element={<PainelMunicaoCadastrar/>} />
             <Route path='/municao/editar' element={<PainelMunicaoEditar/>} />
             <Route path='/municao/listar' element={<PainelMunicaoLista/>} />
+
+            <Route path='/policial' element={<PainelPolicial/>} />
+            {/* <Route path='/municao/cadastro' element={<PainelMunicaoCadastrar/>} />
+            <Route path='/municao/editar' element={<PainelMunicaoEditar/>} />
+            <Route path='/municao/listar' element={<PainelMunicaoLista/>} /> */}
         </Routes>
     );
 }
