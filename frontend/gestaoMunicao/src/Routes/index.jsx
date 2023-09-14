@@ -10,6 +10,10 @@ import PainelMarca from "../pages/PainelMarca";
 import PainelMarcaCadastrar from "../pages/PainelMarcaCadastrar";
 import PainelMarcaEditar from "../pages/PainelMarcaEditar";
 import PainelMarcaLista from "../pages/PainelMarcaLista";
+import PainelMunicao from "../pages/PainelMunicao";
+import PainelMunicaoCadastrar from "../pages/PainelMunicaoCadastrar";
+import PainelMunicaoLista from "../pages/PainelMunicaoLista";
+import PainelMunicaoEditar from "../pages/PainelMunicaoEditar";
 
 function RoutesApp(){
     return(
@@ -26,6 +30,11 @@ function RoutesApp(){
             <Route path='/marca/cadastro' element={<PainelMarcaCadastrar/>} />
             <Route path='/marca/editar' element={<PainelMarcaEditar/>} />
             <Route path='/marca/listar' element={<PainelMarcaLista/>} />
+
+            <Route path='/municao' element={<PainelMunicao/>} />
+            <Route path='/municao/cadastro' element={<PainelMunicaoCadastrar/>} />
+            <Route path='/municao/editar' element={<PainelMunicaoEditar/>} />
+            <Route path='/municao/listar' element={<PainelMunicaoLista/>} />
         </Routes>
     );
 }
