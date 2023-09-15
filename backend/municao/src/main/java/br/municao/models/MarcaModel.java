@@ -20,7 +20,7 @@ public class MarcaModel {
      * Identificador único para a Marca.
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_marca")
     private long id;
 
@@ -34,6 +34,6 @@ public class MarcaModel {
     @Column(name = "nome_marca", nullable = false)
     private String nome;
 
-    @OneToMany(mappedBy = "marca")
+    @OneToMany(mappedBy = "marca", fetch = FetchType.EAGER)
     private List<MunicaoModel> municoes;
 }
