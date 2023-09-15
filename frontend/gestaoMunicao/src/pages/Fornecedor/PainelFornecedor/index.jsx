@@ -8,14 +8,7 @@ import { useEffect, useState } from "react";
 
 function PainelFornecedor(){
 
-    const fornecedor = {
-        id: 0,
-        razaoSocial: '',
-        cnpj: '',
-    }
-
     const [fornecedores, setFornecedores] = useState([]);
-    const [objFornecedor, setObjFornecedor] = useState(fornecedor);
 
     useEffect(() => {
         fetch("http://localhost:8080/fornecedor/lista")
