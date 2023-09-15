@@ -1,7 +1,7 @@
 import { CMain, ContentMain } from "./Marca.styled"
 
-import TopBar from "../../components/TopBar";
-import LeftBar from "../../components/LerftBar"
+import TopBar from "../../../components/TopBar";
+import LeftBar from "../../../components/LerftBar"
 import HeaderMarca from "./components/HeaderMarca";
 
 function PainelMarca(){

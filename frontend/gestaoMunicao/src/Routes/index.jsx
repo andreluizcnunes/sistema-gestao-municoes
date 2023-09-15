@@ -8,10 +8,11 @@ import PainelFornecedorCadastro from "../pages/Fornecedor/PainelFornecedorCadast
 import PainelFornecedorLista from "../pages/Fornecedor/PainelFornecedorLista";
 import PainelFornecedorEditar from "../pages/Fornecedor/PainelFornecedorEditar";
 
-import PainelMarca from "../pages/PainelMarca";
-import PainelMarcaCadastrar from "../pages/PainelMarcaCadastrar";
-import PainelMarcaEditar from "../pages/PainelMarcaEditar";
-import PainelMarcaLista from "../pages/PainelMarcaLista";
+import PainelMarca from "../pages/Marca/PainelMarca";
+import PainelMarcaCadastrar from "../pages/Marca/PainelMarcaCadastrar";
+import PainelMarcaEditar from "../pages/Marca/PainelMarcaEditar";
+import PainelMarcaLista from "../pages/Marca/PainelMarcaLista";
+
 import PainelMunicao from "../pages/PainelMunicao";
 import PainelMunicaoCadastrar from "../pages/PainelMunicaoCadastrar";
 import PainelMunicaoLista from "../pages/PainelMunicaoLista";
