@@ -44,9 +44,13 @@ public class PolicialService {
         return new ResponseEntity<PolicialModel>(policialRepository.save(policial), HttpStatus.OK);
     }
 
-    public List<PolicialDTO> getAllPolicial(){
+    public List<PolicialDTO> getAllPolicialDTO(){
         List<PolicialModel> policial = policialRepository.findAll();
         return policial.stream().map(x -> new PolicialDTO(x)).toList();
+    }
+
+    public List<PolicialModel> getAllPolicial(){
+        return policialRepository.findAll();
     }
 
     private ResponseEntity<?> validateFields(PolicialModel policial) {
