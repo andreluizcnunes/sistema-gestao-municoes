@@ -2,10 +2,12 @@ import { Routes, Route } from "react-router-dom";
 
 import Login from "../pages/Login"
 import Dashboard from "../pages/Dashboard";
-import PainelFornecedor from "../pages/PainelFornecedor";
-import PainelFornecedorCadastro from "../pages/PainelFornecedorCadastro";
-import PainelFornecedorLista from "../pages/PainelFornecedorLista";
-import PainelFornecedorEditar from "../pages/PainelFornecedorEditar";
+
+import PainelFornecedor from "../pages/Fornecedor/PainelFornecedor";
+import PainelFornecedorCadastro from "../pages/Fornecedor/PainelFornecedorCadastro";
+import PainelFornecedorLista from "../pages/Fornecedor/PainelFornecedorLista";
+import PainelFornecedorEditar from "../pages/Fornecedor/PainelFornecedorEditar";
+
 import PainelMarca from "../pages/PainelMarca";
 import PainelMarcaCadastrar from "../pages/PainelMarcaCadastrar";
 import PainelMarcaEditar from "../pages/PainelMarcaEditar";

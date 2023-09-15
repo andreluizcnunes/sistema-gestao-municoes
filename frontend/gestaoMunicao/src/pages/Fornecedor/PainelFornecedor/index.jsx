@@ -1,7 +1,7 @@
 import { CMain, ContentMain } from "./PainelFornecedor.styled"
 
-import TopBar from "../../components/TopBar";
-import LeftBar from "../../components/LerftBar";
+import TopBar from "../../../components/TopBar";
+import LeftBar from "../../../components/LerftBar";
 import HeaderFornecedor from "./components/HeaderFornecedor";
 
 function PainelFornecedor(){

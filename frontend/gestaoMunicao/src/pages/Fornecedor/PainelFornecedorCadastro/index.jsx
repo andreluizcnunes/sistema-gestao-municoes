@@ -1,19 +1,19 @@
-import { CMain, ContentMain, CSection } from "./FornecedorEditar.styled"
+import { CMain, ContentMain, CSection } from "./FornecedorCadastro.styled"
 
-import LeftBar from "../../components/LerftBar";
-import TopBar from "../../components/TopBar";
+import LeftBar from "../../../components/LerftBar";
+import TopBar from "../../../components/TopBar";
 
 import HeaderFornecedor from "../PainelFornecedor/components/HeaderFornecedor";
 import FormFornecedor from "../PainelFornecedor/components/FormFornecedor";
 
-function PainelFornecedorEditar(){
+function PainelFornecedorCadastro(){
     return(
         <CMain>
             <TopBar/>
             <ContentMain>
                 <LeftBar/>
                 <CSection>
-                    <HeaderFornecedor titulo={"Editar Fornecedor"}/>
+                    <HeaderFornecedor titulo={"Cadastro de Fornecedor"}/>
                     <FormFornecedor/>
                 </CSection>
             </ContentMain>
@@ -21,4 +21,4 @@ function PainelFornecedorEditar(){
     );
 }
 
-export default PainelFornecedorEditar;
+export default PainelFornecedorCadastro;
