@@ -1,10 +1,18 @@
+import { CMain, ContentMain } from "./User.styled"
+
+import TopBar from "../../../components/TopBar";
+import LeftBar from "../../../components/LerftBar";
+import HeaderUser from "./components/HeaderUser"
+
 function PainelUser(){
     return(
-        <>
-            <h1>
-                Painel Usuario do sistema
-            </h1>
-        </>
+        <CMain>
+            <TopBar/>
+            <ContentMain>
+                <LeftBar/>
+                <HeaderUser titulo={"Painel Usuário"} />
+            </ContentMain>
+        </CMain>
     );
 }
 
