@@ -8,13 +8,7 @@ import TabelaMarca from "./components/TabelaMarca";
 
 function PainelMarca(){
 
-    const marca = {
-        id: 0,
-        nome: ''
-    }
-
     const [marcas, setMarcas] = useState([]);
-    const [objMarca, setObjMarca] = useState(marca);
 
     useEffect(() => {
         fetch("http://localhost:8080/marca/listar")
