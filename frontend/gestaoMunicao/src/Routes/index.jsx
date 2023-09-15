@@ -18,10 +18,10 @@ import PainelMunicaoCadastrar from "../pages/Municao/PainelMunicaoCadastrar";
 import PainelMunicaoLista from "../pages/Municao/PainelMunicaoLista";
 import PainelMunicaoEditar from "../pages/Municao/PainelMunicaoEditar";
 
-import PainelPolicial from "../pages/PainelPolicial";
-import PainelPolicialCadastro from "../pages/PainelPolicialCadastro";
-import PainelPolicialLista from "../pages/PainelPolicialLista";
-import PainelPolicialEditar from "../pages/PainelPolicialEditar";
+import PainelPolicial from "../pages/Policial/PainelPolicial";
+import PainelPolicialCadastro from "../pages/Policial/PainelPolicialCadastro";
+import PainelPolicialLista from "../pages/Policial/PainelPolicialLista";
+import PainelPolicialEditar from "../pages/Policial/PainelPolicialEditar";
 
 function RoutesApp(){
     return(

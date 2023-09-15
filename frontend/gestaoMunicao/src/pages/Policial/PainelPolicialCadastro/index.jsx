@@ -1,7 +1,7 @@
 import { CMain, ContentMain, CSection } from "./PolicialCadastrar.styled"
 
-import TopBar from "../../components/TopBar";
-import LeftBar from "../../components/LerftBar"
+import TopBar from "../../../components/TopBar";
+import LeftBar from "../../../components/LerftBar"
 import HeaderPolicial from "../PainelPolicial/components/HeaderPolicial";
 import FormPolicial from "../PainelPolicial/components/FormPolicial";
 
