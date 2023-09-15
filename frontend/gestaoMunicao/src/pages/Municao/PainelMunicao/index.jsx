@@ -1,7 +1,7 @@
 import { CMain, ContentMain } from "./PainelMunicao.styled"
 
-import TopBar from "../../components/TopBar";
-import LeftBar from "../../components/LerftBar"
+import TopBar from "../../../components/TopBar";
+import LeftBar from "../../../components/LerftBar"
 import HeaderMunicao from "./components/HeaderMunicao";
 
 function PainelMunicao(){

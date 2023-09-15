@@ -13,10 +13,11 @@ import PainelMarcaCadastrar from "../pages/Marca/PainelMarcaCadastrar";
 import PainelMarcaEditar from "../pages/Marca/PainelMarcaEditar";
 import PainelMarcaLista from "../pages/Marca/PainelMarcaLista";
 
-import PainelMunicao from "../pages/PainelMunicao";
-import PainelMunicaoCadastrar from "../pages/PainelMunicaoCadastrar";
-import PainelMunicaoLista from "../pages/PainelMunicaoLista";
-import PainelMunicaoEditar from "../pages/PainelMunicaoEditar";
+import PainelMunicao from "../pages/Municao/PainelMunicao";
+import PainelMunicaoCadastrar from "../pages/Municao/PainelMunicaoCadastrar";
+import PainelMunicaoLista from "../pages/Municao/PainelMunicaoLista";
+import PainelMunicaoEditar from "../pages/Municao/PainelMunicaoEditar";
+
 import PainelPolicial from "../pages/PainelPolicial";
 import PainelPolicialCadastro from "../pages/PainelPolicialCadastro";
 import PainelPolicialLista from "../pages/PainelPolicialLista";
