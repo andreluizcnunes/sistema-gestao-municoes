@@ -5,6 +5,11 @@ function TabelaFonecedor({ vetor }) {
         <CTabela>
             <thead>
                 <tr>
+                    <th colSpan="4">
+                        Fornecedores Recentes
+                    </th>
+                </tr>
+                <tr>
                     <th>#</th>
                     <th>Razão Social</th>
                     <th>Cnpj</th>
@@ -13,7 +18,7 @@ function TabelaFonecedor({ vetor }) {
             </thead>
             <tbody>
                 {
-                    vetor.slice(0, 5).map((obj, indice) => (
+                    vetor.slice().reverse().slice(0, 6).map((obj, indice) => (
                         <tr key={indice}>
                             <td>{indice + 1}</td>
                             <td>{obj.razaoSocial}</td>
