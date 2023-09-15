@@ -30,20 +30,11 @@ public class PolicialModel {
     @Column(name = "rg")
     private String rg;
 
-    @Column(name = "qra")
-    private String qra;
-
     @Column(name = "data_nascimento", nullable = false)
     private String dataNascimento;
 
     @Column(name = "telefone")
     private String telefone;
-
-    @Column(name = "matricula")
-    private String matricula;
-
-    @Column(name = "senha", nullable = false)
-    private String senha;
 
     @OneToMany(mappedBy = "policial")
     private List<EmprestimoMunicaoModel> emprestimoMunicao;

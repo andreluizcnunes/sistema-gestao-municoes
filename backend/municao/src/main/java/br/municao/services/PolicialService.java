@@ -70,12 +70,6 @@ public class PolicialService {
             smsResponse.setMessage("O campo 'Data Nascimento' é obrigatório");
             // Retorna uma resposta com status de erro
             return new ResponseEntity<SmsResponse>(smsResponse, HttpStatus.BAD_REQUEST);
-        }else if (policial.getSenha().equals("")) {
-            // Verifica se a Senha do usuário está vazio
-            // Define uma mensagem de erro
-            smsResponse.setMessage("O campo 'Senha' é obrigatório");
-            // Retorna uma resposta com status de erro
-            return new ResponseEntity<SmsResponse>(smsResponse, HttpStatus.BAD_REQUEST);
         }
         return null; // Retorna null em caso de sucesso na validação
     }

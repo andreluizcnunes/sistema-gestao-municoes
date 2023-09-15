@@ -13,7 +13,5 @@ public class PolicialDTO {
     public PolicialDTO(PolicialModel policial){
         this.nome = policial.getNome();
         this.cpf = policial.getCpf();
-        this.qra = policial.getQra();
-        this.matricula = policial.getMatricula();
     }
 }
