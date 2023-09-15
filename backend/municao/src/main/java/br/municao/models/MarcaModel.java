@@ -34,6 +34,6 @@ public class MarcaModel {
     @Column(name = "nome_marca", nullable = false)
     private String nome;
 
-    @OneToMany(mappedBy = "marca", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "marca")
     private List<MunicaoModel> municoes;
 }
