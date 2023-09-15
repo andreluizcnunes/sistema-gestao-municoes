@@ -14,6 +14,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/marca")
+@CrossOrigin(origins = "http://localhost:5173")
 public class MarcaController {
     private final MarcaService marcaService;
 
