@@ -1,76 +1,86 @@
 import { Cmain, NomeCompleto, PolicialCpf, PolicialRg, GroupInput, DataNascimento, PolicialTelefone } from './FormPolicial.styled';
 
-function FormMunicao(){
+function FormMunicao({ getDadosForm, cadastrar, obj }){
     return(
         <Cmain>
-            <NomeCompleto htmlFor="NomeCompleto">
+            <NomeCompleto htmlFor="nome">
                 <p>
                     Nome Completo <span>(Campo Obrigatório)</span>
                 </p>
                 <input 
                     type="text" 
-                    name='NomeCompleto' 
-                    id='NomeCompleto' 
-                    placeholder='Digite o Nome Completo' 
+                    name='nome' 
+                    id='nome' 
+                    placeholder='Digite o Nome Completo'
+                    onChange={getDadosForm}
+                    value={obj.nome} 
                     required
                 />
             </NomeCompleto>
 
             <GroupInput>
-                <PolicialCpf htmlFor="PolicialCpf">
+                <PolicialCpf htmlFor="cpf">
                     <p>
                         CPF: <span>(Campo Obrigatório)</span>
                     </p>
                     <input 
                         type="text" 
-                        name='PolicialCpf' 
-                        id='PolicialCpf' 
+                        name='cpf' 
+                        id='cpf' 
                         placeholder='Digite o CPF' 
+                        onChange={getDadosForm}
+                        value={obj.cpf}
                         required
                     />
                 </PolicialCpf>
 
-                <PolicialRg htmlFor="PolicialRg">
+                <PolicialRg htmlFor="rg">
                     <p>
                         RG:
                     </p>
                     <input 
                         type="text" 
-                        name='PolicialRg' 
-                        id='PolicialRg' 
+                        name='rg' 
+                        id='rg' 
                         placeholder='Digite o RG'
+                        onChange={getDadosForm}
+                        value={obj.rg}
                     />
                 </PolicialRg>
             </GroupInput>
 
             <GroupInput>
-                <DataNascimento htmlFor="DataNascimento">
+                <DataNascimento htmlFor="dataNascimento">
                     <p>
                         Data de Nascimento: <span>(Campo Obrigatório)</span>
                     </p>
                     <input 
-                        type="text" 
-                        name='DataNascimento' 
-                        id='DataNascimento' 
+                        type="date" 
+                        name='dataNascimento' 
+                        id='dataNascimento' 
                         placeholder='Digite a data nascimento' 
+                        onChange={getDadosForm}
+                        value={obj.dataNascimento}
                         required
                     />
                 </DataNascimento>
 
-                <PolicialTelefone htmlFor="PolicialTelefone">
+                <PolicialTelefone htmlFor="telefone">
                     <p>
                         Telefone:
                     </p>
                     <input 
                         type="text" 
-                        name='PolicialTelefone' 
-                        id='PolicialTelefone' 
+                        name='telefone' 
+                        id='telefone' 
                         placeholder='Digite o Telefone'
+                        onChange={getDadosForm}
+                        value={obj.telefone}
                     />
                 </PolicialTelefone>
             </GroupInput>            
 
-            <button type='submit'>
+            <button onClick={cadastrar} type='submit'>
                 Salvar
             </button>
         </Cmain>
