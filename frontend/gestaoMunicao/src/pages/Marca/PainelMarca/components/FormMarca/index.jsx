@@ -1,16 +1,24 @@
 import { Cmain, NomeMarca } from './FormMarca.styled';
 
-function FormMarca(){
+function FormMarca({ getDadosForm, cadastrar, obj }){
     return(
         <Cmain>
             <NomeMarca htmlFor="nomeMarca">
                 <p>
                     Nome: <span>(Campo Obrigatório)</span>
                 </p>
-                <input type="text" name='nomeMarca' id='nomeMarca' placeholder='Digite a Razão Social' required/>
+                <input 
+                    type="text" 
+                    name='nome' 
+                    id='nomeMarca' 
+                    placeholder='Digite o Nome da Marca'
+                    onChange={getDadosForm}
+                    value={obj.nome}
+                    required
+                />
             </NomeMarca>           
 
-            <button type='submit'>
+            <button onClick={cadastrar} type='submit'>
                 Salvar
             </button>
         </Cmain>
