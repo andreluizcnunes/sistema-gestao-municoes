@@ -1,49 +1,55 @@
 import { Cmain, NomeCompleto, EmailUser, SenhaUser } from './FormUsuario.styled';
 
-function FormUsuario(){
+function FormUsuario({ getDadosForm, cadastrar, obj }){
     return(
         <Cmain>
-            <NomeCompleto htmlFor="NomeCompleto">
+            <NomeCompleto htmlFor="nome">
                 <p>
                     Nome Completo: <span>(Campo Obrigatório)</span>
                 </p>
                 <input 
                     type="text" 
-                    name='NomeCompleto' 
-                    id='NomeCompleto' 
-                    placeholder='Digite o Nome Completo' 
+                    name='nome' 
+                    id='nome' 
+                    placeholder='Digite o Nome Completo'
+                    onChange={getDadosForm}
+                    value={obj.nome} 
                     required
                 />
             </NomeCompleto>
 
-            <EmailUser htmlFor="EmailUser">
+            <EmailUser htmlFor="email">
                 <p>
                     E-mail: <span>(Campo Obrigatório)</span>
                 </p>
                 <input 
                     type="text" 
-                    name='EmailUser' 
-                    id='EmailUser' 
-                    placeholder='Digite o e-mail' 
+                    name='email' 
+                    id='email' 
+                    placeholder='Digite o e-mail'
+                    onChange={getDadosForm}
+                    value={obj.email}  
                     required
                 />
             </EmailUser>
 
-            <SenhaUser htmlFor="SenhaUser">
+            <SenhaUser htmlFor="senha">
                 <p>
                     Senha: <span>(Campo Obrigatório)</span>
                 </p>
                 <input 
                     type="text" 
-                    name='SenhaUser' 
-                    id='SenhaUser' 
-                    placeholder='Digite a senha' 
+                    name='senha' 
+                    id='senha' 
+                    placeholder='Digite a senha'
+                    onChange={getDadosForm}
+                    value={obj.senha}  
                     required
                 />
             </SenhaUser>
              
 
-            <button type='submit'>
+            <button onClick={cadastrar} type='submit'>
                 Salvar
             </button>
         </Cmain>
