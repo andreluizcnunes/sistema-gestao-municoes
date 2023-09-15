@@ -17,6 +17,7 @@ import PainelMunicaoEditar from "../pages/PainelMunicaoEditar";
 import PainelPolicial from "../pages/PainelPolicial";
 import PainelPolicialCadastro from "../pages/PainelPolicialCadastro";
 import PainelPolicialLista from "../pages/PainelPolicialLista";
+import PainelPolicialEditar from "../pages/PainelPolicialEditar";
 
 function RoutesApp(){
     return(
@@ -41,7 +42,7 @@ function RoutesApp(){
 
             <Route path='/policial' element={<PainelPolicial/>} />
             <Route path='/policial/cadastro' element={<PainelPolicialCadastro/>} />
-            {/* <Route path='/municao/editar' element={<PainelMunicaoEditar/>} /> */}
+            <Route path='/policial/editar' element={<PainelPolicialEditar/>} />
             <Route path='/policial/listar' element={<PainelPolicialLista/>} />
         </Routes>
     );
