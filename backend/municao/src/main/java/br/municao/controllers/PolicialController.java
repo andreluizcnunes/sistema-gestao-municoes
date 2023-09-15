@@ -1,6 +1,5 @@
 package br.municao.controllers;
 
-import br.municao.dto.PolicialDTO;
 import br.municao.models.PolicialModel;
 import br.municao.services.PolicialService;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,7 @@ public class PolicialController {
     public PolicialController(PolicialService policialService){this.policialService = policialService;}
 
     @GetMapping("/lista")
-    public List<PolicialDTO> getAllPolicial(){return policialService.getAllPolicial();}
+    public List<PolicialModel> getAllPolicial(){return policialService.getAllPolicial();}
 
     @PostMapping("/cadastrar")
     public ResponseEntity<?> registerNewPolicial(@RequestBody PolicialModel newPolicial){
