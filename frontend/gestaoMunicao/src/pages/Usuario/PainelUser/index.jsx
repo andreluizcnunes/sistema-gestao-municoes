@@ -1,16 +1,31 @@
-import { CMain, ContentMain } from "./User.styled"
+import { CMain, ContentMain, CSection } from "./User.styled"
 
 import TopBar from "../../../components/TopBar";
 import LeftBar from "../../../components/LerftBar";
 import HeaderUser from "./components/HeaderUser"
+import TabelaUsuario from "./components/TabelaUsuario";
+import { useEffect, useState } from "react";
 
 function PainelUser(){
+
+    const [usuarios, setUsuarios] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:8080/users/lista")
+        .then(retorno => retorno.json())
+        .then(retornoConvertido => setUsuarios(retornoConvertido));
+    }, []);
+
+    
     return(
         <CMain>
             <TopBar/>
-            <ContentMain>
+            <ContentMain>                
                 <LeftBar/>
-                <HeaderUser titulo={"Painel Usuário"} />
+                <CSection>
+                    <HeaderUser titulo={"Painel Usuário"} />
+                    <TabelaUsuario vetor={usuarios}/>
+                </CSection>
             </ContentMain>
         </CMain>
     );
