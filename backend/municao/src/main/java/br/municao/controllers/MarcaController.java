@@ -37,6 +37,11 @@ public class MarcaController {
         return  marcaService.getAllMarca();
     }
 
+    @GetMapping("/consultar")
+    public List<MarcaDTO> getMarcaByName(@RequestParam(name = "nome") String nome){
+        return marcaService.findByNomeDto(nome);
+    }
+
     /**
      * Cadastra uma nova marca.
      *

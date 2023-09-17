@@ -75,6 +75,10 @@ public class MarcaService {
         return marca.stream().map(x -> new MarcaDTO(x)).toList();
     }
 
+    public List<MarcaDTO> findByNomeDto(String nome){
+        return marcaRepository.findByNomeMarcaDto(nome);
+    }
+
     /**
      * Exclui uma marca do sistema com base no seu ID.
      *
