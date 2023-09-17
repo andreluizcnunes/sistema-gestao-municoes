@@ -81,6 +81,10 @@ public class UserService {
         return user.stream().map(x -> new UserDTO(x)).toList();
     }
 
+    public List<UserDTO> findByUsuarioNameDto(String nome){
+        return usersRepository.findByUsuarioNameDto(nome);
+    }
+
     /**
      * Exclui um usuário com base no ID fornecido.
      *

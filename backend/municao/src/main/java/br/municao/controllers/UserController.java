@@ -25,6 +25,11 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @GetMapping("/consultar")
+    public List<UserDTO> getUsuarioByNomeDto(@RequestParam(name = "nome") String nome){
+        return userService.findByUsuarioNameDto(nome);
+    }
+
     @PostMapping("/cadastrar")
     public ResponseEntity<?> registerNewUser(@RequestBody UserModel newUser){
         return userService.registerUser(newUser);
