@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Cmain = styled.form`
     display: flex;
+    flex-direction: column;
     gap: 1rem;
     background-color: #A0A0A0;
     margin-left: 2rem;

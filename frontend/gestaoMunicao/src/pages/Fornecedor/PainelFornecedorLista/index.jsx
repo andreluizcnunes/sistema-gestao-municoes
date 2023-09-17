@@ -7,8 +7,13 @@ import HeaderFornecedor from "../PainelFornecedor/components/HeaderFornecedor";
 import FormBuscaFornecedor from "../PainelFornecedor/components/FormBuscaFornecedor";
 
 function PainelFornecedorLista(){
+
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+    }
+
     return(
-        <CMain>
+        <CMain onSubmit={handleSubmit}>
             <TopBar/>
             <ContentMain>
                 <LeftBar/>
