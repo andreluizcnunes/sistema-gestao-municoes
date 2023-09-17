@@ -24,4 +24,9 @@ export const CTabela = styled.table`
         background-color: #dddddd;
         padding: .2rem 0;
     }
+    
+    button{
+        width: initial !important;
+        font-size: initial !important;
+    }
 `;
