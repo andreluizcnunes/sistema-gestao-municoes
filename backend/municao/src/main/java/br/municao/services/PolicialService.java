@@ -53,6 +53,10 @@ public class PolicialService {
         return policialRepository.findAll();
     }
 
+    public List<PolicialDTO> getByPolicialForname(String nome){
+        return policialRepository.findByNome(nome);
+    }
+
     private ResponseEntity<?> validateFields(PolicialModel policial) {
 
         if (policial.getNome().equals("")){
