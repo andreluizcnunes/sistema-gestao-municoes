@@ -19,10 +19,6 @@ public class FornecedorDTO {
      * O número de CNPJ (Cadastro Nacional da Pessoa Jurídica) do fornecedor.
      */
     private String cnpj;
-    /**
-     * O número de inscrição do fornecedor.
-     */
-    private String inscricao;
 
     /**
      * Construtor da classe FornecedorDTO que recebe um objeto FornecedorModel como parâmetro e cria uma instância DTO com base nos dados desse modelo.
@@ -32,6 +28,5 @@ public class FornecedorDTO {
     public FornecedorDTO(FornecedorModel fornecedor){
         this.razaoSocial = fornecedor.getRazaoSocial();
         this.cnpj = fornecedor.getCnpj();
-        this.inscricao = fornecedor.getInscricao();
     }
 }

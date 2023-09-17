@@ -74,6 +74,14 @@ public class FornecedorService {
         return fornecedor.stream().map(x -> new FornecedorDTO(x)).toList();
     }
 
+    public List<FornecedorDTO> findByRazaoSocialNew(String razaoSocial){
+        return fornecedorRepository.findByRazaoSocialDto(razaoSocial);
+    }
+
+    public List<FornecedorModel> buscarRazaoSocial(String razaoSocial){
+        return fornecedorRepository.findByRazaoSocial(razaoSocial);
+    }
+
     /**
      * Exclui um fornecedor com base no ID fornecido.
      *

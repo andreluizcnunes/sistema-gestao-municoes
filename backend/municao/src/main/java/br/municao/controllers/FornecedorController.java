@@ -3,6 +3,7 @@ package br.municao.controllers;
 import br.municao.dto.FornecedorDTO;
 import br.municao.models.FornecedorModel;
 import br.municao.services.FornecedorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +26,7 @@ public class FornecedorController {
      *
      * @param fornecedorService O serviço responsável por lidar com operações de fornecedores.
      */
+    @Autowired
     public FornecedorController(FornecedorService fornecedorService){
         this.fornecedorService = fornecedorService;
     }
@@ -38,6 +40,21 @@ public class FornecedorController {
     @GetMapping("/lista")
     public List<FornecedorDTO> getAllFornecedores(){
         return fornecedorService.getAllFornecedor();
+    }
+
+    @GetMapping("/consultar/{razaoSocial}")
+    public List<FornecedorModel> getFornecedorByRazaoSocial(@PathVariable String razaoSocial){
+        return fornecedorService.buscarRazaoSocial(razaoSocial);
+    }
+
+    @GetMapping("/consultar")
+    public List<FornecedorModel> getFornecedorByRazaoSocialLast(@RequestParam(name = "razaoSocial") String razaoSocial){
+        return fornecedorService.buscarRazaoSocial(razaoSocial);
+    }
+
+    @GetMapping("/consultardto")
+    public List<FornecedorDTO> getFornecedorByRazaoSocialLastDto(@RequestParam(name = "razaoSocial") String razaoSocial){
+        return fornecedorService.findByRazaoSocialNew(razaoSocial);
     }
 
     /**
