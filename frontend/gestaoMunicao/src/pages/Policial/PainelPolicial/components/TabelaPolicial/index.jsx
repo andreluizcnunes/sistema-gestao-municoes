@@ -1,6 +1,23 @@
 import { CTabela } from "./TabelaPolicial.styled"
 
 function TabelaPolicial({ vetor }){
+
+    const remover = (indice) => {
+        fetch(`http://localhost:8080/policial/deletar/${indice}`, {
+            method: 'delete',
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+            .then(retorno => retorno.json())
+            .then(retorno_convertido => {
+
+                // mensagem de sucesso
+                alert("Removido com sucesso!");
+            })
+    }
+
     return(
         <CTabela>
             <thead>
@@ -29,7 +46,7 @@ function TabelaPolicial({ vetor }){
                                 <button>
                                     Editar
                                 </button>
-                                <button>
+                                <button onClick={() => { remover(obj.id) }}>
                                     Deletar
                                 </button>
                             </td>
