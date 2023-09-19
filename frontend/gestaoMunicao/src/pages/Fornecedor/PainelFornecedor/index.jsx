@@ -7,14 +7,14 @@ import TabelaFonecedor from "./components/TabelaFornecedor";
 import { useEffect, useState } from "react";
 
 function PainelFornecedor(){
-
+  
     const [fornecedores, setFornecedores] = useState([]);
 
     useEffect(() => {
         fetch("http://localhost:8080/fornecedor/lista")
           .then(retorno => retorno.json())
           .then(retornoConvertido => setFornecedores(retornoConvertido));
-    }, []);
+    }, []);      
 
     return(
         <CMain>
