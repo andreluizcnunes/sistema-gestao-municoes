@@ -9,6 +9,9 @@ import lombok.Getter;
  */
 @Getter
 public class UserDTO {
+
+    private Long id;
+
     /**
      * O nome do usuário.
      */
@@ -25,7 +28,8 @@ public class UserDTO {
      * @param user O UserModel do qual os dados serão extraídos para criar o UserDTO.
      */
     public UserDTO(UserModel user){
-        nome = user.getNome();
-        email = user.getEmail();
+        this.id = user.getId();
+        this.nome = user.getNome();
+        this.email = user.getEmail();
     }
 }
