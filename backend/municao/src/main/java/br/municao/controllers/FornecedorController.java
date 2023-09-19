@@ -2,6 +2,7 @@ package br.municao.controllers;
 
 import br.municao.dto.FornecedorDTO;
 import br.municao.models.FornecedorModel;
+import br.municao.response.SmsResponse;
 import br.municao.services.FornecedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -77,5 +78,10 @@ public class FornecedorController {
     @PutMapping("/editar")
     public ResponseEntity<?> updateFornecedor(@RequestBody FornecedorModel fornecedor){
         return fornecedorService.updateFornecedor(fornecedor);
+    }
+
+    @DeleteMapping("/deletar/{id}")
+    public ResponseEntity<SmsResponse> deleteFornecedorId(@PathVariable Long id){
+        return fornecedorService.deleteFornecedor(id);
     }
 }

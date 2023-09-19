@@ -20,7 +20,7 @@ public class FornecedorModel {
      * O identificador único do fornecedor no banco de dados.
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 
@@ -34,7 +34,6 @@ public class FornecedorModel {
      */
     @Column(name = "razao_social", nullable = false)
     private String razaoSocial;
-
 
     /**
      * O CNPJ (Cadastro Nacional da Pessoa Jurídica) do fornecedor.

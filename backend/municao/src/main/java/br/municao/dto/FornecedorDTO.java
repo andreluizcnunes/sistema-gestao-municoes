@@ -11,6 +11,7 @@ import lombok.Getter;
 @Getter
 public class FornecedorDTO {
 
+    private Long id;
     /**
      * O nome da razão social do fornecedor.
      */
@@ -26,6 +27,7 @@ public class FornecedorDTO {
      * @param fornecedor O objeto FornecedorModel do qual os dados serão copiados para criar este objeto FornecedorDTO.
      */
     public FornecedorDTO(FornecedorModel fornecedor){
+        this.id = fornecedor.getId();
         this.razaoSocial = fornecedor.getRazaoSocial();
         this.cnpj = fornecedor.getCnpj();
     }
