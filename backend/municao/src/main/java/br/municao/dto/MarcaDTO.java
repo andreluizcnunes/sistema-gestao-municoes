@@ -9,6 +9,8 @@ import lombok.Getter;
  */
 @Getter
 public class MarcaDTO {
+
+    private Long id;
     /**
      * O nome da marca.
      */
@@ -20,6 +22,7 @@ public class MarcaDTO {
      * @param marca O objeto MarcaModel do qual deseja-se criar o DTO.
      */
     public MarcaDTO(MarcaModel marca){
+        this.id = marca.getId();
         this.nome = marca.getNome();
     }
 }

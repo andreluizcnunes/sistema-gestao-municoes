@@ -2,6 +2,7 @@ package br.municao.controllers;
 
 import br.municao.dto.MarcaDTO;
 import br.municao.models.MarcaModel;
+import br.municao.response.SmsResponse;
 import br.municao.services.MarcaService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -61,6 +62,11 @@ public class MarcaController {
      */
     public ResponseEntity<?> updateMarca(@RequestBody MarcaModel marca){
         return marcaService.updateMarca(marca);
+    }
+
+    @DeleteMapping("/deletar/{id}")
+    public ResponseEntity<SmsResponse> deletarMarcaId(@PathVariable Long id){
+        return marcaService.deleteMarca(id);
     }
 
 
