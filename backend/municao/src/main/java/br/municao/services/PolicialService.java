@@ -57,6 +57,12 @@ public class PolicialService {
         return policialRepository.findByNome(nome);
     }
 
+    public ResponseEntity<SmsResponse> deletePolicial(Long id){
+        policialRepository.deleteById(id);
+        smsResponse.setMessage("Policial deletado com sucesso.");
+        return new ResponseEntity<SmsResponse>(smsResponse, HttpStatus.OK);
+    }
+
     private ResponseEntity<?> validateFields(PolicialModel policial) {
 
         if (policial.getNome().equals("")){

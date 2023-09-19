@@ -2,6 +2,7 @@ package br.municao.controllers;
 
 import br.municao.dto.PolicialDTO;
 import br.municao.models.PolicialModel;
+import br.municao.response.SmsResponse;
 import br.municao.services.PolicialService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,5 +34,10 @@ public class PolicialController {
     @PutMapping("/editar")
     public ResponseEntity<?> updatePolicial(@RequestBody PolicialModel policial){
         return policialService.updatePolicial(policial);
+    }
+
+    @DeleteMapping("/deletar/{id}")
+    public ResponseEntity<SmsResponse> deletarPolificalById(@PathVariable Long id){
+        return policialService.deletePolicial(id);
     }
 }

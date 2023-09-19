@@ -69,5 +69,4 @@ public class MarcaController {
         return marcaService.deleteMarca(id);
     }
 
-
 }
