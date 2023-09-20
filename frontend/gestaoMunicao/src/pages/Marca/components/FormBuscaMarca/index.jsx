@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { Cmain, BuscarMarca } from "./FormBuscaMarca.styled"
 
-import TabelaMacar from "../TabelaMarca"
+import TabelaMarca from "../TabelaMarca"
 
 function FormBuscaMarca(){
 
@@ -48,7 +48,7 @@ function FormBuscaMarca(){
 
             <div>
                 {resultados.length > 0 ? (
-                    <TabelaMacar vetor={resultados}/>
+                    <TabelaMarca vetor={resultados}/>
                 ): null}
             </div>       
         </Cmain>
