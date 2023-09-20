@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Esta classe é responsável por fornecer serviços relacionados a fornecedores.
@@ -72,6 +73,10 @@ public class FornecedorService {
     public List<FornecedorDTO> getAllFornecedor(){
         List<FornecedorModel> fornecedor = fornecedorRepository.findAll();
         return fornecedor.stream().map(x -> new FornecedorDTO(x)).toList();
+    }
+
+    public Optional<FornecedorModel> getFornecedorById(Long id){
+        return fornecedorRepository.findById(id);
     }
 
     public List<FornecedorDTO> findByRazaoSocialNew(String razaoSocial){
