@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Esta classe é responsável por controlar as operações relacionadas a fornecedores.
@@ -41,6 +42,11 @@ public class FornecedorController {
     @GetMapping("/lista")
     public List<FornecedorDTO> getAllFornecedores(){
         return fornecedorService.getAllFornecedor();
+    }
+
+    @GetMapping("/lista/{id}")
+    public Optional<FornecedorModel> getByIdFornecedor(@PathVariable Long id){
+        return fornecedorService.getFornecedorById(id);
     }
 
     @GetMapping("/consultar/{razaoSocial}")
