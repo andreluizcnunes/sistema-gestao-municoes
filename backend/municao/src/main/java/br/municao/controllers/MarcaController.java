@@ -1,6 +1,7 @@
 package br.municao.controllers;
 
 import br.municao.dto.MarcaDTO;
+import br.municao.models.FornecedorModel;
 import br.municao.models.MarcaModel;
 import br.municao.response.SmsResponse;
 import br.municao.services.MarcaService;
@@ -49,11 +50,17 @@ public class MarcaController {
      * @param newMarca O objeto MarcaModel a ser cadastrado.
      * @return Uma resposta ResponseEntity indicando o resultado da operação.
      */
-    @PostMapping("/cadastrar")
+    @PostMapping("/cadastrardto")
     public ResponseEntity<?> registerNewMarca(@RequestBody MarcaModel newMarca){
         return marcaService.registerMarca(newMarca);
     }
 
+    @PostMapping("/cadastrar")
+    public MarcaModel addMarca(@RequestBody MarcaModel newMarca){
+        return marcaService.addMarca(newMarca);
+    }
+
+    @PutMapping("/editar")
     /**
      * Atualiza uma marca existente.
      *

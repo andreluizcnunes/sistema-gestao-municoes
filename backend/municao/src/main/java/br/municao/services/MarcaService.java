@@ -6,7 +6,6 @@ import br.municao.repositories.MarcaRepository;
 import br.municao.response.SmsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -47,6 +46,10 @@ public class MarcaService {
         }
 
         return new ResponseEntity<MarcaModel>(marcaRepository.save(newMarca), HttpStatus.CREATED);
+    }
+
+    public MarcaModel addMarca(MarcaModel newMarca){
+        return marcaRepository.save(newMarca);
     }
 
     /**
