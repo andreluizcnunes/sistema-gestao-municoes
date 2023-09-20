@@ -2,8 +2,8 @@ import { CMain, ContentMain, CSection } from "./MarcaCadastro.styled"
 
 import TopBar from "../../../components/TopBar";
 import LeftBar from "../../../components/LerftBar"
-import HeaderMarca from "../PainelMarca/components/HeaderMarca";
-import FormMarca from "../PainelMarca/components/FormMarca";
+import HeaderMarca from "../components/HeaderMarca";
+import FormMarca from "../components/FormMarca";
 import { useState } from "react";
 
 function PainelMarcaCadastrar(){

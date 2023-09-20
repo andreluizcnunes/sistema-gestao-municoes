@@ -2,12 +2,17 @@ import { CMain, ContentMain, CSection } from "./MarcaLista.styled"
 
 import TopBar from "../../../components/TopBar";
 import LeftBar from "../../../components/LerftBar"
-import HeaderMarca from "../PainelMarca/components/HeaderMarca";
-import FormBuscaMarca from "../PainelMarca/components/FormBuscaMarca";
+import HeaderMarca from "../components/HeaderMarca";
+import FormBuscaMarca from "../components/FormBuscaMarca";
 
 function PainelMarcaLista(){
+    
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+    }
+
     return(
-        <CMain>
+        <CMain onSubmit={handleSubmit}>
             <TopBar/>
             <ContentMain>
                 <LeftBar/>
