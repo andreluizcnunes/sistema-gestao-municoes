@@ -6,7 +6,6 @@ import Dashboard from "../pages/Dashboard";
 import PainelFornecedor from "../pages/Fornecedor/PainelFornecedor";
 import PainelFornecedorCadastro from "../pages/Fornecedor/PainelFornecedorCadastro";
 import PainelFornecedorLista from "../pages/Fornecedor/PainelFornecedorLista";
-import PainelFornecedorEditar from "../pages/Fornecedor/PainelFornecedorEditar";
 
 import PainelMarca from "../pages/Marca/PainelMarca";
 import PainelMarcaCadastrar from "../pages/Marca/PainelMarcaCadastrar";
@@ -36,7 +35,6 @@ function RoutesApp(){
 
             <Route path='/fornecedor' element={<PainelFornecedor/>} />
             <Route path='/fornecedor/cadastro' element={<PainelFornecedorCadastro/>} />
-            <Route path='/fornecedor/editar' element={<PainelFornecedorEditar/>} />
             <Route path='/fornecedor/listar' element={<PainelFornecedorLista/>} />
 
             <Route path='/marca' element={<PainelMarca/>} />
