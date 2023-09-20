@@ -9,7 +9,6 @@ import PainelFornecedorLista from "../pages/Fornecedor/PainelFornecedorLista";
 
 import PainelMarca from "../pages/Marca/PainelMarca";
 import PainelMarcaCadastrar from "../pages/Marca/PainelMarcaCadastrar";
-import PainelMarcaEditar from "../pages/Marca/PainelMarcaEditar";
 import PainelMarcaLista from "../pages/Marca/PainelMarcaLista";
 
 import PainelMunicao from "../pages/Municao/PainelMunicao";
@@ -39,7 +38,6 @@ function RoutesApp(){
 
             <Route path='/marca' element={<PainelMarca/>} />
             <Route path='/marca/cadastro' element={<PainelMarcaCadastrar/>} />
-            <Route path='/marca/editar' element={<PainelMarcaEditar/>} />
             <Route path='/marca/listar' element={<PainelMarcaLista/>} />
 
             <Route path='/municao' element={<PainelMunicao/>} />
