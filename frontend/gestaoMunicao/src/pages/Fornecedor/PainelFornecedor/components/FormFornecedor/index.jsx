@@ -1,6 +1,6 @@
 import { Cmain, RazaoSocial, Cnpj, Inscricao, GroupInput } from './FormFornecedor.styled';
 
-function FormFornecedor({ getDadosForm, obj, cadastrar }){
+function FormFornecedor({ getDadosForm, obj, acao }){
     return(
         <Cmain>
             <RazaoSocial htmlFor="razaoSocial">
@@ -49,7 +49,7 @@ function FormFornecedor({ getDadosForm, obj, cadastrar }){
                 </Inscricao>
             </GroupInput>            
 
-            <button onClick={cadastrar} type='submit'>
+            <button onClick={acao} type='submit'>
                 Salvar
             </button>
         </Cmain>
