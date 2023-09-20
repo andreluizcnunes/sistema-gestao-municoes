@@ -2,8 +2,8 @@ import { CMain, ContentMain, CSection } from "./PainelFornecedor.styled"
 
 import TopBar from "../../../components/TopBar";
 import LeftBar from "../../../components/LerftBar";
-import HeaderFornecedor from "./components/HeaderFornecedor";
-import TabelaFonecedor from "./components/TabelaFornecedor";
+import HeaderFornecedor from "../components/HeaderFornecedor";
+import TabelaFonecedor from "../components/TabelaFornecedor";
 import { useEffect, useState } from "react";
 
 function PainelFornecedor(){

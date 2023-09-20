@@ -1,6 +1,6 @@
 import { CTabela } from "./TabelaFornecedor.styled"
 
-import ModalEditarFornecedor from "../../../components/ModalEditarFornecedor"
+import ModalEditarFornecedor from "../ModalEditarFornecedor"
 import { useState } from "react";
 
 function TabelaFonecedor({ vetor }) {

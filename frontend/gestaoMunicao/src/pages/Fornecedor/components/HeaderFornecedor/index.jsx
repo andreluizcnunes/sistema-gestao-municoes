@@ -1,10 +1,10 @@
 import { ContentInfo, ContainerBtn} from "./HeaderFornecedor.styled"
 
-import BtnMenu from "../../../../../components/BtnMenu";
+import BtnMenu from "../../../../components/BtnMenu";
 
-import IconAdd from "../../../../../assets/icons/iconAdd.png";
-import IconBusca from "../../../../../assets/icons/iconBusca.png";
-import IconHome from "../../../../../assets/icons/iconHome.png";
+import IconAdd from "../../../../assets/icons/iconAdd.png";
+import IconBusca from "../../../../assets/icons/iconBusca.png";
+import IconHome from "../../../../assets/icons/iconHome.png";
 
 function HeaderFornecedor({ titulo }) {
     return (

@@ -3,8 +3,8 @@ import { CMain, ContentMain, CSection } from "./FornecedorCadastro.styled"
 import LeftBar from "../../../components/LerftBar";
 import TopBar from "../../../components/TopBar";
 
-import HeaderFornecedor from "../PainelFornecedor/components/HeaderFornecedor";
-import FormFornecedor from "../PainelFornecedor/components/FormFornecedor";
+import HeaderFornecedor from "../components/HeaderFornecedor";
+import FormFornecedor from "../components/FormFornecedor";
 import { useState } from "react";
 
 function PainelFornecedorCadastro(){
