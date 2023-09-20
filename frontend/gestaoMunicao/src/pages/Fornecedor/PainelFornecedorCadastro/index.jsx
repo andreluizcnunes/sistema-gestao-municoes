@@ -55,7 +55,7 @@ function PainelFornecedorCadastro(){
                 <LeftBar/>
                 <CSection>
                     <HeaderFornecedor titulo={"Cadastro de Fornecedor"}/>
-                    <FormFornecedor getDadosForm={getInputForm} obj={objFornecedor} cadastrar={cadastrarFornecedor}/>
+                    <FormFornecedor getDadosForm={getInputForm} obj={objFornecedor} acao={cadastrarFornecedor}/>
                 </CSection>
             </ContentMain>
         </CMain>
