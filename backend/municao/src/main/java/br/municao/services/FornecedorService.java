@@ -49,6 +49,10 @@ public class FornecedorService {
         return new ResponseEntity<FornecedorModel>(fornecedorRepository.save(newFornecedor), HttpStatus.CREATED);
     }
 
+    public FornecedorModel addFornecedor(FornecedorModel newFornecedor){
+        return fornecedorRepository.save(newFornecedor);
+    }
+
     /**
      * Atualiza as informações de um fornecedor existente.
      *

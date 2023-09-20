@@ -70,9 +70,14 @@ public class FornecedorController {
      * @param newFornecedor O objeto FornecedorModel contendo os dados do novo fornecedor a ser cadastrado.
      * @return Um objeto ResponseEntity representando o resultado da operação.
      */
-    @PostMapping("/cadastrar")
+    @PostMapping("/cadastrardto")
     public ResponseEntity<?> registerNewFornecedor(@RequestBody FornecedorModel newFornecedor){
         return fornecedorService.registerFornecedor(newFornecedor);
+    }
+
+    @PostMapping("/cadastrar")
+    public FornecedorModel addFornecedor(@RequestBody FornecedorModel newFornecedor){
+        return fornecedorService.addFornecedor(newFornecedor);
     }
 
     /**
