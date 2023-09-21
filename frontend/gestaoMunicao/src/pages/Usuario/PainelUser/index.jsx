@@ -1,10 +1,10 @@
 import { CMain, ContentMain, CSection } from "./User.styled"
+import { useEffect, useState } from "react";
 
 import TopBar from "../../../components/TopBar";
 import LeftBar from "../../../components/LerftBar";
-import HeaderUser from "./components/HeaderUser"
-import TabelaUsuario from "./components/TabelaUsuario";
-import { useEffect, useState } from "react";
+import HeaderUser from "../components/HeaderUser"
+import TabelaUsuario from "../components/TabelaUsuario";
 
 function PainelUser(){
 

@@ -3,8 +3,8 @@ import { CMain, ContentMain, CSection } from "./UserCadastro.styled"
 
 import TopBar from "../../../components/TopBar";
 import LeftBar from "../../../components/LerftBar"
-import HeaderUser from "../PainelUser/components/HeaderUser";
-import FormUsuario from "../PainelUser/components/FormUsuario";
+import HeaderUser from "../components/HeaderUser";
+import FormUsuario from "../components/FormUsuario";
 import { useState } from "react";
 
 function PainelUserCadastro(){
