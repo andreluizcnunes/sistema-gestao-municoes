@@ -6,8 +6,14 @@ import HeaderUser from "../components/HeaderUser";
 import BuscarUsuario from "../components/BuscarUsuario";
 
 function PainelUserLista(){
+
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+    }
+
+
     return(
-        <CMain>
+        <CMain onSubmit={handleSubmit}>
             <TopBar/>
             <ContentMain>
                 <LeftBar/>
