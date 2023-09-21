@@ -19,7 +19,6 @@ import PainelMunicaoEditar from "../pages/Municao/PainelMunicaoEditar";
 import PainelPolicial from "../pages/Policial/PainelPolicial";
 import PainelPolicialCadastro from "../pages/Policial/PainelPolicialCadastro";
 import PainelPolicialLista from "../pages/Policial/PainelPolicialLista";
-import PainelPolicialEditar from "../pages/Policial/PainelPolicialEditar";
 
 import PainelUser from "../pages/Usuario/PainelUser";
 import PainelUserCadastro from "../pages/Usuario/PainelUserCadastro";
@@ -47,7 +46,6 @@ function RoutesApp(){
 
             <Route path='/policial' element={<PainelPolicial/>} />
             <Route path='/policial/cadastro' element={<PainelPolicialCadastro/>} />
-            <Route path='/policial/editar' element={<PainelPolicialEditar/>} />
             <Route path='/policial/listar' element={<PainelPolicialLista/>} />
 
             <Route path='/usuario' element={<PainelUser/>} />

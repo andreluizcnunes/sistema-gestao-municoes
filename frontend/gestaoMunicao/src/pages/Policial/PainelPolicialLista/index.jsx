@@ -2,8 +2,8 @@ import { CMain, ContentMain, CSection } from "./PolicialEditar.styled"
 
 import TopBar from "../../../components/TopBar";
 import LeftBar from "../../../components/LerftBar"
-import HeaderPolicial from "../PainelPolicial/components/HeaderPolicial";
-import BuscarPolicial from "../PainelPolicial/components/BuscarPolicial";
+import HeaderPolicial from "../components/HeaderPolicial";
+import BuscarPolicial from "../components/BuscarPolicial";
 
 function PainelPolicialLista(){
     return(

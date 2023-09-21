@@ -2,8 +2,8 @@ import { CMain, ContentMain, CSection } from "./PolicialCadastrar.styled"
 
 import TopBar from "../../../components/TopBar";
 import LeftBar from "../../../components/LerftBar"
-import HeaderPolicial from "../PainelPolicial/components/HeaderPolicial";
-import FormPolicial from "../PainelPolicial/components/FormPolicial";
+import HeaderPolicial from "../components/HeaderPolicial";
+import FormPolicial from "../components/FormPolicial";
 import { useState } from "react";
 
 function PainelPolicialCadastro(){

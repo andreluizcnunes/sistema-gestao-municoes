@@ -2,8 +2,8 @@ import { CMain, ContentMain, CSection } from "./Policial.styled"
 
 import TopBar from "../../../components/TopBar";
 import LeftBar from "../../../components/LerftBar";
-import HeaderPolicial from "./components/HeaderPolicial"
-import TabelaPolicial from "./components/TabelaPolicial";
+import HeaderPolicial from "../components/HeaderPolicial"
+import TabelaPolicial from "../components/TabelaPolicial";
 import { useEffect, useState } from "react";
 
 function PainelPolicial(){
