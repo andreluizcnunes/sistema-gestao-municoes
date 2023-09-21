@@ -6,8 +6,13 @@ import HeaderPolicial from "../components/HeaderPolicial";
 import BuscarPolicial from "../components/BuscarPolicial";
 
 function PainelPolicialLista(){
+
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+    }
+
     return(
-        <CMain>
+        <CMain onSubmit={handleSubmit}>
             <TopBar/>
             <ContentMain>
                 <LeftBar/>
