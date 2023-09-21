@@ -1,7 +1,7 @@
 import { CTabela } from "./TabelaMarca.styled"
+import { useState } from "react";
 
 import ModalEditarMarca from "../ModelEditarMarca"
-import { useState } from "react";
 
 function TabelaMarca({ vetor }) {
 
