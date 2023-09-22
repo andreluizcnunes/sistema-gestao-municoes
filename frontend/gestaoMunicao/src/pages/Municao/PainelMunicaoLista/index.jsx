@@ -2,8 +2,8 @@ import { CMain, ContentMain, CSection } from "./MunicaoLista.styled"
 
 import TopBar from "../../../components/TopBar";
 import LeftBar from "../../../components/LerftBar"
-import HeaderMunicao from "../PainelMunicao/components/HeaderMunicao";
-import FormBuscaMunicao from "../PainelMunicao/components/FormBuscaMunicao";
+import HeaderMunicao from "../components/HeaderMunicao";
+import FormBuscaMunicao from "../components/FormBuscaMunicao";
 
 function PainelMunicaoLista(){
     return(

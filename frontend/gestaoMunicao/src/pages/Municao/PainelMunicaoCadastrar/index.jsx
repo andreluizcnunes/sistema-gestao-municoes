@@ -1,10 +1,11 @@
+import { useState } from "react";
+
 import { CMain, ContentMain, CSection } from "./MunicaoCadastrar.styled"
 
 import TopBar from "../../../components/TopBar";
 import LeftBar from "../../../components/LerftBar"
-import HeaderMunicao from "../PainelMunicao/components/HeaderMunicao";
-import FormMunicao from "../PainelMunicao/components/FormMunicao";
-import { useState } from "react";
+import HeaderMunicao from "../components/HeaderMunicao";
+import FormMunicao from "../components/FormMunicao";
 
 function PainelMunicaoCadastrar(){
 

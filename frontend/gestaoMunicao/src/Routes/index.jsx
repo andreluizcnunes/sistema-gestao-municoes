@@ -14,7 +14,6 @@ import PainelMarcaLista from "../pages/Marca/PainelMarcaLista";
 import PainelMunicao from "../pages/Municao/PainelMunicao";
 import PainelMunicaoCadastrar from "../pages/Municao/PainelMunicaoCadastrar";
 import PainelMunicaoLista from "../pages/Municao/PainelMunicaoLista";
-import PainelMunicaoEditar from "../pages/Municao/PainelMunicaoEditar";
 
 import PainelPolicial from "../pages/Policial/PainelPolicial";
 import PainelPolicialCadastro from "../pages/Policial/PainelPolicialCadastro";
@@ -42,7 +41,6 @@ function RoutesApp(){
 
             <Route path='/municao' element={<PainelMunicao/>} />
             <Route path='/municao/cadastro' element={<PainelMunicaoCadastrar/>} />
-            <Route path='/municao/editar' element={<PainelMunicaoEditar/>} />
             <Route path='/municao/listar' element={<PainelMunicaoLista/>} />
 
             <Route path='/policial' element={<PainelPolicial/>} />
