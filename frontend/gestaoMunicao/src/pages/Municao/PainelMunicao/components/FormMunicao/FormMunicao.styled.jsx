@@ -27,7 +27,7 @@ export const Cmain = styled.form`
             }
         }
 
-        input{
+        input, select{
             font-size: 1.2rem;
             border-radius: 20px;
             border: none;
@@ -71,18 +71,10 @@ export const Marca = styled.label`
     
     width: 50%;
 
-    input{
+    select{
         width: 100%;
     }
 
-`;
-
-export const Modelo = styled.label`
-    width: 50%;
-    
-    input{
-        width: 100%;
-    }
 `;
 
 export const Calibre = styled.label`

@@ -1,48 +1,96 @@
-import { Cmain, NomeMunicao, Marca, Modelo, GroupInput, Calibre, Peso } from './FormMunicao.styled';
+import { useEffect, useState } from 'react';
+import { Cmain, NomeMunicao, Marca, GroupInput, Calibre, Peso } from './FormMunicao.styled';
 
-function FormMunicao(){
-    return(
+function FormMunicao({ getDadosForm, cadastrar, obj }) {
+
+    const [marcas, setMarcas] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:8080/marca/listar")
+            .then(retorno => retorno.json())
+            .then(retornoConvertido => setMarcas(retornoConvertido));
+    }, []);
+
+    const handleInputChange = (event) => {
+        if (event.target.name === "marca") {
+            // Agora, apenas atualizamos o estado obj.marca.id com o valor selecionado
+            const marcaSelecionada = event.target.value;
+            getDadosForm(event); // Isso ainda atualiza os outros campos no estado obj
+        } else {
+            getDadosForm(event);
+        }
+    };
+
+
+    return (
         <Cmain>
             <NomeMunicao htmlFor="NomeMunicao">
                 <p>
                     Nome Munição: <span>(Campo Obrigatório)</span>
                 </p>
-                <input type="text" name='NomeMunicao' id='NomeMunicao' placeholder='Digite o Nome da Munição' required/>
+                <input
+                    type="text"
+                    name='nome'
+                    id='nome'
+                    placeholder='Digite o Nome da Munição'
+                    onChange={getDadosForm}
+                    value={obj.nome}
+                    required
+                />
             </NomeMunicao>
-
-            <GroupInput>
-                <Marca htmlFor="marca">
-                    <p>
-                        Marca: <span>(Campo Obrigatório)</span>
-                    </p>
-                    <input type="text" name='marca' id='marca' placeholder='Digite a Marca' required/>
-                </Marca>
-
-                <Modelo htmlFor="Modelo">
-                    <p>
-                        Modelo:
-                    </p>
-                    <input type="text" name='Modelo' id='Modelo' placeholder='Digite o Modelo'/>
-                </Modelo>
-            </GroupInput>
 
             <GroupInput>
                 <Calibre htmlFor="Calibre">
                     <p>
                         Calibre: <span>(Campo Obrigatório)</span>
                     </p>
-                    <input type="text" name='Calibre' id='Calibre' placeholder='Digite o Calibre' required/>
+                    <input
+                        type="text"
+                        name='calibre'
+                        id='calibre'
+                        placeholder='Digite o Calibre'
+                        onChange={getDadosForm}
+                        value={obj.calibre}
+                        required
+                    />
                 </Calibre>
 
                 <Peso htmlFor="Peso">
                     <p>
                         Peso:
                     </p>
-                    <input type="text" name='Peso' id='Peso' placeholder='Digite o Peso'/>
+                    <input
+                        type="text"
+                        name='peso'
+                        id='peso'
+                        placeholder='Digite o Peso'
+                        onChange={getDadosForm}
+                        value={obj.peso}
+                    />
                 </Peso>
-            </GroupInput>            
+            </GroupInput>
 
-            <button type='submit'>
+            <Marca>
+                <p>
+                    Marca: <span>(Campo Obrigatório)</span>
+                </p>
+                <select
+                    name='marca' 
+                    value={obj.marca.id} 
+                    onChange={handleInputChange}
+                >
+
+                    <option value="">Selecione uma Marca</option>
+                    {marcas.map(marca => (
+                        <option key={marca.id} value={marca.id}>
+                            {marca.nome}
+                        </option>
+                    ))}
+                </select>
+            </Marca>
+
+
+            <button onClick={cadastrar} type='submit'>
                 Salvar
             </button>
         </Cmain>
