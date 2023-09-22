@@ -13,7 +13,7 @@ import java.util.List;
 public class MunicaoModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_municao")
     private long id;
 
