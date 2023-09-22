@@ -4,13 +4,11 @@ import br.municao.models.EntradaMunicaoModel;
 import br.municao.services.EntradaMunicaoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/entradaestoque")
+@CrossOrigin(origins = "http://localhost:5173")
 public class EntradaMunicaoController {
 
     private final EntradaMunicaoService entradaMunicaoService;
@@ -20,7 +18,7 @@ public class EntradaMunicaoController {
     }
 
     @PostMapping("/newentrada")
-    public ResponseEntity<String> atualizarEstoqueMunicao(@RequestBody EntradaMunicaoModel entradaMunicao) {
+    public ResponseEntity<String> entradaEstoqueMunicao(@RequestBody EntradaMunicaoModel entradaMunicao) {
         try {
             entradaMunicaoService.newEntradaMunicao(entradaMunicao);
             return new ResponseEntity<>("Estoque de munição atualizado com sucesso", HttpStatus.OK);

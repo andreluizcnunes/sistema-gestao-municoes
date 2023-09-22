@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Uma classe de serviço que lida com operações relacionadas à entidade MarcaModel.
@@ -76,6 +77,10 @@ public class MarcaService {
     public List<MarcaDTO> getAllMarca(){
         List<MarcaModel> marca = marcaRepository.findAll();
         return marca.stream().map(x -> new MarcaDTO(x)).toList();
+    }
+
+    public Optional<MarcaModel> getMacarById(Long id){
+        return marcaRepository.findById(id);
     }
 
     public List<MarcaDTO> findByNomeDto(String nome){
