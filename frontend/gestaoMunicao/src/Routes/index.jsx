@@ -24,6 +24,8 @@ import PainelUser from "../pages/Usuario/PainelUser";
 import PainelUserCadastro from "../pages/Usuario/PainelUserCadastro";
 import PainelUserLista from "../pages/Usuario/PainelUserLista";
 
+import PainelLancamento from "../pages/Lancamento/PainelLancamento";
+
 function RoutesApp(){
     return(
         <Routes>
@@ -50,6 +52,8 @@ function RoutesApp(){
             <Route path='/usuario' element={<PainelUser/>} />
             <Route path='/usuario/cadastro' element={<PainelUserCadastro/>} />
             <Route path='/usuario/listar' element={<PainelUserLista/>} />
+
+            <Route path="/lancamento" element={<PainelLancamento/>} />
         </Routes>
     );
 }

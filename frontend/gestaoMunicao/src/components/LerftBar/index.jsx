@@ -4,7 +4,7 @@ function LeftBar(){
     return(
         <CLeftBar>
             <a href="/dashboard">Inicio</a>
-            <a href="/dashboard">Lançamentos</a>
+            <a href="/lancamento">Lançamentos</a>
             <a href="/municao">Munições</a>
             <a href="/policial">Policiais</a>
             <a href="/fornecedor">Fornecedores</a>
