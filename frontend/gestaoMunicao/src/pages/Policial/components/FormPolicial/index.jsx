@@ -1,6 +1,6 @@
 import { Cmain, NomeCompleto, PolicialCpf, PolicialRg, GroupInput, DataNascimento, PolicialTelefone } from './FormPolicial.styled';
 
-function FormMunicao({ getDadosForm, cadastrar, obj }){
+function FormPolicial({ getDadosForm, cadastrar, obj }){
     return(
         <Cmain>
             <NomeCompleto htmlFor="nome">
@@ -87,4 +87,4 @@ function FormMunicao({ getDadosForm, cadastrar, obj }){
     );
 }
 
-export default FormMunicao;
+export default FormPolicial;
