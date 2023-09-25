@@ -29,9 +29,8 @@ public class MunicaoController {
     public List<MunicaoDTO> getAllMunicaoDTO(){return municaoService.getAllMunicaoDTO();}
 
     @GetMapping("/listar")
-    public ResponseEntity<List<MunicaoModel>> getAllMunicao(){
-        List<MunicaoModel> municoes = municaoService.getAllMunicao();
-        return ResponseEntity.ok(municoes);
+    public List<MunicaoModel> getAllMunicao(){
+        return municaoService.getAllMunicao();
     }
 
     @PostMapping("/cadastrar")
