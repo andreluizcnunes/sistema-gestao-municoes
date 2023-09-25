@@ -1,5 +1,6 @@
 package br.municao.controllers;
 
+import br.municao.dto.MarcaDTO;
 import br.municao.dto.MunicaoDTO;
 import br.municao.models.MarcaModel;
 import br.municao.models.MunicaoModel;
@@ -31,6 +32,11 @@ public class MunicaoController {
     @GetMapping("/listar")
     public List<MunicaoModel> getAllMunicao(){
         return municaoService.getAllMunicao();
+    }
+
+    @GetMapping("/consultar")
+    public List<MunicaoDTO> getMunicaoName(@RequestParam(name = "nome") String nome){
+        return municaoService.getMunicaoByname(nome);
     }
 
     @PostMapping("/cadastrar")
