@@ -1,12 +1,13 @@
-import { CTabela } from "./TabelaMarca.styled"
 import { useEffect, useState } from "react";
 
-import ModalEditarMarca from "../ModelEditarMarca"
+import { CTabela } from "./TabelaMunicao.styled"
 
-function TabelaMarca({ vetor }) {
+import ModalEditarMunicao from "../ModalEditarMunicao"
+
+function TabelaMunicao({ vetor }) {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedMarca, setSelectedMarca] = useState(null);
+    const [selectedMunicao, setSelectedMunicao] = useState(null);
 
     useEffect(() => {
         
@@ -19,24 +20,24 @@ function TabelaMarca({ vetor }) {
     }, [isModalOpen])
 
     const openModal = (marca) => {
-        setSelectedMarca(marca);
+        setSelectedMunicao(marca);
         setIsModalOpen(true);
     };
 
     const closeModal = () => {
-        setSelectedMarca(null);
+        setSelectedMunicao(null);
         setIsModalOpen(false);
     };
 
-    const handleEditSave = (editedMarca) => {
+    const handleEditSave = (editedMunicao) => {
         // Faça a lógica para salvar as informações editadas do fornecedor aqui
-        console.log("Marca editado:", editedMarca);
+        console.log("Marca editado:", editedMunicao);
         closeModal();
     };
 
 
     const remover = (indice) => {
-        fetch(`http://localhost:8080/marca/deletar/${indice}`, {
+        fetch(`http://localhost:8080/municao/deletar/${indice}`, {
             method: 'delete',
             headers: {
                 'Content-type': 'application/json',
@@ -56,13 +57,16 @@ function TabelaMarca({ vetor }) {
             <CTabela>
                 <thead>
                     <tr>
-                        <th colSpan="4">
-                            Marcas Recentes
+                        <th colSpan="6">
+                            Tabela de Munições
                         </th>
                     </tr>
                     <tr>
                         <th>#</th>
                         <th>Nome</th>
+                        <th>Calibre</th>
+                        <th>Quantidade</th>
+                        <th>Marca</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -72,6 +76,9 @@ function TabelaMarca({ vetor }) {
                             <tr key={indice}>
                                 <td>{indice + 1}</td>
                                 <td>{obj.nome}</td>
+                                <td>{obj.calibre}</td>
+                                <td>{obj.quantidade}</td>
+                                <td>{obj.marca}</td>
                                 <td>
                                     <button onClick={() => openModal(obj)}>
                                         Editar
@@ -86,8 +93,8 @@ function TabelaMarca({ vetor }) {
                 </tbody>
             </CTabela>
             {isModalOpen && (
-                <ModalEditarMarca
-                    marca={selectedMarca}
+                <ModalEditarMunicao
+                    marca={selectedMunicao}
                     onClose={closeModal}
                     onSave={handleEditSave}
                 />
@@ -96,4 +103,4 @@ function TabelaMarca({ vetor }) {
     );
 }
 
-export default TabelaMarca;
+export default TabelaMunicao;
