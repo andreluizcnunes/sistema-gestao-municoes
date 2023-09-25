@@ -56,6 +56,10 @@ public class MunicaoService {
 
     }
 
+    public List<MunicaoDTO> getMunicaoByname(String nome){
+        return municaoRepository.findByNomeMunicaoDto(nome);
+    }
+
     public ResponseEntity<SmsResponse> deleteMunicao(Long id){
         municaoRepository.deleteById(id);
         smsResponse.setMessage("Munição deletada com sucesso.");
