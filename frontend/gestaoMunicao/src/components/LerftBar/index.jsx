@@ -1,15 +1,17 @@
+import ButtonBar from "./ButtonBar";
 import { CLeftBar } from "./LeftBar.styled";
 
 function LeftBar(){
+
     return(
         <CLeftBar>
-            <a href="/dashboard">Inicio</a>
-            <a href="/lancamento">Lançamentos</a>
-            <a href="/municao">Munições</a>
-            <a href="/policial">Policiais</a>
-            <a href="/fornecedor">Fornecedores</a>
-            <a href="/marca">Marca</a>
-            <a href="/usuario">Usuários</a>
+            <ButtonBar link={'/dashboard'} texto={'Inicio'}/>
+            <ButtonBar link={'/lancamento'} texto={'Lançamentos'}/>
+            <ButtonBar link={'/municao'} texto={'Munições'}/>
+            <ButtonBar link={'/policial'} texto={'Policiais'}/>
+            <ButtonBar link={'/fornecedor'} texto={'Fornecedores'}/>
+            <ButtonBar link={'/marca'} texto={'Marca'}/>
+            <ButtonBar link={'/usuario'} texto={'Usuários'}/>
         </CLeftBar>
     );
 }
