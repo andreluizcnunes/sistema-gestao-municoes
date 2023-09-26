@@ -80,3 +80,18 @@ export const ContainerButton = styled.div`
         }
     }
 `;
+
+export const Marca = styled.label`
+    
+    width: 50%;
+
+    select{
+        width: 100%;
+        font-size: 1.2rem;
+        border-radius: 20px;
+        border: none;
+        padding: .8rem;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+
+`;
