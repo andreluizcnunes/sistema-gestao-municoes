@@ -5,14 +5,12 @@ import br.municao.models.MunicaoModel;
 import br.municao.repositories.EntradaMunicaoRepository;
 import br.municao.repositories.MunicaoRepository;
 import br.municao.response.SmsResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
 public class EntradaMunicaoService {
 
-   private final EntradaMunicaoRepository entradaMunicaoRepository;
+    private final EntradaMunicaoRepository entradaMunicaoRepository;
     private final MunicaoRepository municaoRepository;
 
     SmsResponse smsResponse;
@@ -23,12 +21,17 @@ public class EntradaMunicaoService {
     }
 
     public void newEntradaMunicao(EntradaMunicaoModel newEntrada){
-        MunicaoModel municao = newEntrada.getMunicao();
+        // Supondo que você tenha um critério para identificar a munição, como um ID único.
+        MunicaoModel municao = municaoRepository.findById(newEntrada.getMunicao().getId()).orElse(new MunicaoModel()); // Obtém o objeto MunicaoModel existente ou cria um novo.
+
         long quantidadeAtual = municao.getQuantidade();
         long quantidadeNova = newEntrada.getQuantidade();
 
-        municao.setQuantidade(quantidadeAtual + quantidadeNova);
+        long total = quantidadeAtual + quantidadeNova;
 
-        municaoRepository.save(municao);
+        municao.setQuantidade(total);
+        entradaMunicaoRepository.save(newEntrada);
     }
+
+
 }

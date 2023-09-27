@@ -1,6 +1,7 @@
 package br.municao.controllers;
 
 import br.municao.models.EntradaMunicaoModel;
+import br.municao.models.MunicaoModel;
 import br.municao.services.EntradaMunicaoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class EntradaMunicaoController {
         this.entradaMunicaoService = entradaMunicaoService;
     }
 
-    @PostMapping("/newentrada")
+    @PostMapping("/newEntrada")
     public ResponseEntity<String> entradaEstoqueMunicao(@RequestBody EntradaMunicaoModel entradaMunicao) {
         try {
             entradaMunicaoService.newEntradaMunicao(entradaMunicao);
