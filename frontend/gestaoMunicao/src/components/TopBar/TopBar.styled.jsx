@@ -2,8 +2,12 @@ import styled from 'styled-components'
 
 export const CNavBar = styled.div`
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
     background-color: #1E217C;
     padding: 0.625rem;
+    z-index: 99;
 
     display: flex;
     align-items: center;
