@@ -13,6 +13,6 @@ import java.util.List;
  */
 public interface UserRepository extends JpaRepository<UserModel, Long> {
 
-    @Query("select u from UserModel u where u.nome like %?1%")
+    @Query("select u from UserModel u where lower(u.nome) like lower(concat('%', ?1, '%'))")
     List<UserDTO> findByUsuarioNameDto(String nome);
 }
