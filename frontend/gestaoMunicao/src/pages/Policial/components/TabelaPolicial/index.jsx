@@ -1,12 +1,15 @@
-import { CTabela } from "./TabelaPolicial.styled"
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import { CTabela, GroupButton, ButtonEdit, ButtonDelete } from "./TabelaPolicial.styled"
 
 import ModalEditarPolicial from "../ModalEditarPolicial";
+import AlertDialogDelete from "../../../../components/AlertDialogDelete";
 
 function TabelaPolicial({ vetor }) {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedPolicial, setSelectedPolicial] = useState(null);
+    const [showConfirmation, setShowConfirmation] = useState(false); // Novo estado para controlar o alerta
 
     const openModal = (policial) => {
         setSelectedPolicial(policial);
@@ -20,11 +23,34 @@ function TabelaPolicial({ vetor }) {
 
     const handleEditSave = (editedPolicial) => {
         // Faça a lógica para salvar as informações editadas do fornecedor aqui
-        console.log("Policial editado:", editedPolicial);
         closeModal();
     };
 
-    const remover = (indice) => {
+    const handleDeleteCancel = () => {
+        // Feche o alerta de confirmação
+        setShowConfirmation(false);
+    };
+
+    const handleDeleteClick = (policial) => {
+        // Exiba o alerta de confirmação quando o botão "Deletar" for clicado
+        setShowConfirmation(true);
+        setSelectedPolicial(policial);
+    };
+
+    useEffect(() => {
+
+        if (isModalOpen === true || showConfirmation === true) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+
+    }, [isModalOpen, showConfirmation])
+
+    const handleDeleteConfirmation = () => {
+        // Faça a lógica de exclusão após a confirmação
+        const indice = selectedPolicial.id; // Suponho que o ID esteja em selectedUsuario.id
+
         fetch(`http://localhost:8080/policial/deletar/${indice}`, {
             method: 'delete',
             headers: {
@@ -33,22 +59,18 @@ function TabelaPolicial({ vetor }) {
             }
         })
             .then(retorno => retorno.json())
-            .then(retorno_convertido => {
+            .then(() => {
+                window.location.reload();
+            });
 
-                // mensagem de sucesso
-                alert("Removido com sucesso!");
-            })
+        // Feche o alerta de confirmação após a exclusão
+        setShowConfirmation(false);
     }
 
     return (
         <>
             <CTabela>
                 <thead>
-                    <tr>
-                        <th colSpan="7">
-                            Cadastros Recentes
-                        </th>
-                    </tr>
                     <tr>
                         <th>#</th>
                         <th>Nome</th>
@@ -61,7 +83,7 @@ function TabelaPolicial({ vetor }) {
                 </thead>
                 <tbody>
                     {
-                        vetor.map((obj, indice) => (
+                        vetor.slice(0, 10).map((obj, indice) => (
                             <tr key={indice}>
                                 <td>{indice + 1}</td>
                                 <td>{obj.nome}</td>
@@ -70,12 +92,14 @@ function TabelaPolicial({ vetor }) {
                                 <td>{obj.dataNascimento}</td>
                                 <td>{obj.telefone}</td>
                                 <td>
-                                    <button onClick={() => openModal(obj)}>
-                                        Editar
-                                    </button>
-                                    <button onClick={() => { remover(obj.id) }}>
-                                        Deletar
-                                    </button>
+                                    <GroupButton>
+                                        <ButtonEdit onClick={() => openModal(obj)}>
+                                            Editar
+                                        </ButtonEdit>
+                                        <ButtonDelete onClick={() => handleDeleteClick(obj)}>
+                                            Deletar
+                                        </ButtonDelete>
+                                    </GroupButton>
                                 </td>
                             </tr>
                         ))
@@ -87,6 +111,15 @@ function TabelaPolicial({ vetor }) {
                     policial={selectedPolicial}
                     onClose={closeModal}
                     onSave={handleEditSave}
+                />
+            )}
+
+            {showConfirmation && (
+                <AlertDialogDelete
+                    message={"Você tem certeza que deseja deletar o usuário?"}
+                    obj={selectedPolicial.nome}
+                    onCancel={handleDeleteCancel}
+                    onConfirm={handleDeleteConfirmation}
                 />
             )}
         </>
