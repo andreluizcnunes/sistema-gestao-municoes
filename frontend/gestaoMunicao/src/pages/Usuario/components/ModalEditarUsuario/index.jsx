@@ -12,7 +12,10 @@ function ModalEditarUsuario({ usuario, onClose, onSave }) {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setEditedUsuario({ ...editedUsuario, [name]: value });
+    setEditedUsuario((prevEditedUsuario) => ({
+        ...prevEditedUsuario,
+        [name]: value,
+    }));
     };
 
     const handleSave = async () => {
@@ -56,7 +59,7 @@ function ModalEditarUsuario({ usuario, onClose, onSave }) {
 
                 <label>Email:</label>
                 <input
-                    type="text"
+                    type="email"
                     name="email"
                     value={editedUsuario.email}
                     onChange={handleInputChange}
@@ -68,7 +71,7 @@ function ModalEditarUsuario({ usuario, onClose, onSave }) {
                     name="senha"
                     value={editedUsuario.senha}
                     onChange={handleInputChange}
-                    placeholder='Digite a senha'
+                    placeholder="Digite a senha"
                 />
 
                 <ContainerButton>

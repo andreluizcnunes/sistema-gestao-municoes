@@ -1,6 +1,5 @@
 package br.municao.controllers;
 
-import br.municao.dto.MarcaDTO;
 import br.municao.dto.MunicaoDTO;
 import br.municao.models.MarcaModel;
 import br.municao.models.MunicaoModel;
@@ -14,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/municao")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MunicaoController {
 
     private final MunicaoService municaoService;
@@ -48,7 +47,7 @@ public class MunicaoController {
             newMunicao.setMarca(marcaSelecionada);
 
             ResponseEntity<?> novaMunicao = municaoService.registerMunicao(newMunicao);
-            return ResponseEntity.ok("Munição cadastrada com sucesso. ID: ");
+            return ResponseEntity.ok("Munição cadastrada com sucesso.");
         } else {
             return ResponseEntity.badRequest().body("Marca não encontrada com o ID fornecido.");
         }
