@@ -19,6 +19,7 @@ export const ContentInfo = styled.div`
     }
 
     @media screen and (max-width: 1400px) {
+        padding: 1.2rem 2rem;
         h2{
             font-size: 2.8rem;
         }
