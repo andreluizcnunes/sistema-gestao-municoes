@@ -22,7 +22,7 @@ function TabelaUsuario({ vetor }) {
         setIsModalOpen(false);
     };
 
-    const handleEditSave = (editedUsuario) => {
+    const handleEditSave = () => {
         // Faça a lógica para salvar as informações editadas do fornecedor aqui
         closeModal();
     };
