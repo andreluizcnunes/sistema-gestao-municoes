@@ -22,6 +22,8 @@ public class UserDTO {
      */
     private String email;
 
+    private String senha;
+
     /**
      * Cria um novo UserDTO com base em um objeto UserModel.
      *
@@ -31,5 +33,6 @@ public class UserDTO {
         this.id = user.getId();
         this.nome = user.getNome();
         this.email = user.getEmail();
+        this.senha = user.getSenha();
     }
 }
