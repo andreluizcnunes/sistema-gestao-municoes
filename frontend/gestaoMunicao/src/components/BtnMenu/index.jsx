@@ -7,7 +7,7 @@ function BtnMenu({ linkBotao,iconBotao, textBotao}){
 
     return(
         <CBotao onClick={() => navigate(linkBotao)}>
-            <img src={iconBotao} alt="" />
+            {/* <img src={iconBotao} alt="" /> */}
             {textBotao}
         </CBotao>
     );
