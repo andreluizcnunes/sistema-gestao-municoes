@@ -37,17 +37,31 @@ export const Cmain = styled.form`
     }
 
     button{
-        width: 50%;
+        padding: .3rem .8rem;
         border: none;
-        border-radius: 20px;
-        background: #4B4B4B;
+        border-radius: .5rem;
+        background: #0275d8;
         color: #fff;
         font-size: 2.5rem;
         cursor: pointer;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
         &:hover{
-            background: #037903;
+            background: #5cb85c;
+        }
+    }
+
+    @media screen and (max-width: 1400px) {
+        label{
+
+            p{
+                font-size: 1.2rem;                
+            }
+        }
+
+        button{
+            
+            font-size: 2rem;
         }
     }
 `;
@@ -81,4 +95,19 @@ export const SenhaUser = styled.label`
         width: 100%;
     }
 
+`;
+
+export const ButtonBlock = styled.button`
+    padding: .3rem .8rem;
+        border: none;
+        border-radius: .5rem;
+        background: #d9534f !important;
+        color: #fff;
+        font-size: 2.5rem;
+        cursor: not-allowed !important;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+        &:hover{
+            background: #d9534f;
+        }
 `;
