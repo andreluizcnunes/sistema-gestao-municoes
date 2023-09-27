@@ -11,3 +11,7 @@ export const ContentMain = styled.div`
 export const CSection = styled.section`
     width: 100%;
 `;
+
+export const Modal = styled.div`
+    
+`;
