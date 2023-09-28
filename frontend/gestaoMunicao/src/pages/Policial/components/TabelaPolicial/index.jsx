@@ -21,7 +21,7 @@ function TabelaPolicial({ vetor }) {
         setIsModalOpen(false);
     };
 
-    const handleEditSave = (editedPolicial) => {
+    const handleEditSave = () => {
         // Faça a lógica para salvar as informações editadas do fornecedor aqui
         closeModal();
     };
@@ -112,7 +112,7 @@ function TabelaPolicial({ vetor }) {
 
             {showConfirmation && (
                 <AlertDialogDelete
-                    message={"Você tem certeza que deseja deletar o usuário?"}
+                    message={"Você tem certeza que deseja deletar o Policial?"}
                     obj={selectedPolicial.nome}
                     onCancel={handleDeleteCancel}
                     onConfirm={handleDeleteConfirmation}
