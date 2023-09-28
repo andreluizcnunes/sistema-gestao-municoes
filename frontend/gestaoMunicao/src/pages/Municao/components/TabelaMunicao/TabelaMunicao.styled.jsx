@@ -33,6 +33,7 @@ export const CTabela = styled.table`
 
 export const GroupButton = styled.div`
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: .5rem;
 
