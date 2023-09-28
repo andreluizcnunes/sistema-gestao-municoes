@@ -1,7 +1,8 @@
-import { CTabela } from "./TabelaFornecedor.styled"
+import { useState } from "react";
+
+import { CTabela, GroupButton, ButtonEdit, ButtonDelete } from "./TabelaFornecedor.styled"
 
 import ModalEditarFornecedor from "../ModalEditarFornecedor"
-import { useState } from "react";
 
 function TabelaFonecedor({ vetor }) {
 
@@ -68,13 +69,17 @@ function TabelaFonecedor({ vetor }) {
                                 <td>{obj.cnpj}</td>
                                 <td>{obj.inscricao}</td>
                                 <td>
-                                    <button onClick={() => openModal(obj)}>
-                                        Editar
-                                    </button>
+                                    <GroupButton>
 
-                                    <button onClick={() => { remover(obj.id) }}>
-                                        Deletar
-                                    </button>
+                                        <ButtonEdit onClick={() => openModal(obj)}>
+                                            Editar
+                                        </ButtonEdit>
+
+                                        <ButtonDelete onClick={() => { remover(obj.id) }}>
+                                            Deletar
+                                        </ButtonDelete>
+
+                                    </GroupButton>
                                 </td>
                             </tr>
                         ))
