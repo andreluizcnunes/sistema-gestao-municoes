@@ -1,6 +1,38 @@
-import { Cmain, RazaoSocial, Cnpj, Inscricao, GroupInput } from './FormFornecedor.styled';
+import { useState } from 'react';
 
-function FormFornecedor({ getDadosForm, obj, acao }){
+import { Cmain, RazaoSocial, Cnpj, Inscricao, GroupInput, ButtonBlock } from './FormFornecedor.styled';
+
+function FormFornecedor({ getDadosForm, obj, cadastrar }){
+
+    const [isFormValid, setIsFormValid] = useState(false);
+
+    const handleSubmit = (e) => {
+        e.preventDefault(); // Evite a submissão padrão do formulário
+        if (isFormValid) {
+            cadastrar(); // Chame a função de cadastro;
+            window.location.reload();
+        }
+    };
+
+    const handleInputChange = (e) => {
+        getDadosForm(e);
+
+        // Valide os campos aqui e atualize o estado isFormValid
+        const { name, value } = e.target;
+        const updatedObj = {
+            ...obj,
+            [name]: value
+        };
+
+        const areFieldsFilled =
+            updatedObj.razaoSocial.trim() !== '' &&
+            updatedObj.cnpj.trim() !== '' &&
+            updatedObj.inscricao.trim() !== '';
+
+        setIsFormValid(areFieldsFilled);
+    };
+
+
     return(
         <Cmain>
             <RazaoSocial htmlFor="razaoSocial">
@@ -12,7 +44,7 @@ function FormFornecedor({ getDadosForm, obj, acao }){
                     name='razaoSocial' 
                     id='razaoSocial' 
                     placeholder='Digite a Razão Social'
-                    onChange={getDadosForm} 
+                    onChange={handleInputChange} 
                     value={obj.razaoSocial}
                     required
                 />
@@ -24,11 +56,11 @@ function FormFornecedor({ getDadosForm, obj, acao }){
                         CNPJ: <span>(Campo Obrigatório)</span>
                     </p>
                     <input 
-                        type="text" 
+                        type="number" 
                         name='cnpj' 
                         id='cnpj' 
                         placeholder='Digite o CNPJ' 
-                        onChange={getDadosForm} 
+                        onChange={handleInputChange}
                         value={obj.cnpj}
                         required
                     />
@@ -39,19 +71,25 @@ function FormFornecedor({ getDadosForm, obj, acao }){
                         Inscrição Estadual:
                     </p>
                     <input 
-                        type="text" 
+                        type="number" 
                         name='inscricao' 
                         id='inscricao' 
-                        placeholder='Digite a Razão Social'
-                        onChange={getDadosForm} 
+                        placeholder='Digite a Inscrição'
+                        onChange={handleInputChange} 
                         value={obj.inscricao}
                     />
                 </Inscricao>
             </GroupInput>            
 
-            <button onClick={acao} type='submit'>
-                Salvar
-            </button>
+            {!isFormValid ? (
+                <ButtonBlock disabled={!isFormValid}>
+                    X Salvar
+                </ButtonBlock>
+            ) : (
+                <button onClick={handleSubmit} type='submit'>
+                    Salvar
+                </button>
+            )}
         </Cmain>
     );
 }

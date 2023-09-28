@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { CMain, ContentMain, CSection } from "./FornecedorCadastro.styled"
 
 import LeftBar from "../../../components/LerftBar";
@@ -5,7 +7,7 @@ import TopBar from "../../../components/TopBar";
 
 import HeaderFornecedor from "../components/HeaderFornecedor";
 import FormFornecedor from "../components/FormFornecedor";
-import { useState } from "react";
+import AlertDialog from "../../../components/AlertDialog";
 
 function PainelFornecedorCadastro(){
 
@@ -17,6 +19,7 @@ function PainelFornecedorCadastro(){
 
     const [fornecedores, setFornecedores] = useState([]);
     const [objFornecedor, setObjFornecedor] = useState(fornecedor);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const getInputForm = (e) => {
         setObjFornecedor({ ...objFornecedor, [e.target.name]:e.target.value });
@@ -35,18 +38,28 @@ function PainelFornecedorCadastro(){
         .then(retorno => retorno.json())
         .then(retorno_convertido =>{
             if(retorno_convertido.mensagem != undefined){
-                alert(retorno_convertido.mensagem);
+                openModal();
             }else{
                 setFornecedores([ ...fornecedores, retorno_convertido]);
-                alert("Fornecedor cadastrado com Sucesso!");
+                openModal();
                 limparFormulario();
             }
         })
+        openModal();
     }
 
     const limparFormulario = () =>{
         setObjFornecedor(fornecedor);
     }
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        limparFormulario();
+    };
 
     return(
         <CMain>
@@ -55,8 +68,11 @@ function PainelFornecedorCadastro(){
                 <LeftBar/>
                 <CSection>
                     <HeaderFornecedor titulo={"Cadastro de Fornecedor"}/>
-                    <FormFornecedor getDadosForm={getInputForm} obj={objFornecedor} acao={cadastrarFornecedor}/>
+                    <FormFornecedor getDadosForm={getInputForm} obj={objFornecedor} cadastrar={cadastrarFornecedor}/>
                 </CSection>
+                {isModalOpen && (
+                    <AlertDialog message={"Cadastro realizado com Sucesso!"} onCancel={closeModal}/>
+                )}
             </ContentMain>
         </CMain>
     );
