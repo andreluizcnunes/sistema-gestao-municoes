@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface PolicialRepository extends JpaRepository<PolicialModel, Long> {
 
-    @Query("select p from PolicialModel p where p.nome like %?1%")
+    @Query("select p from PolicialModel p where lower(p.nome) like lower(concat('%', ?1, '%'))")
     List<PolicialDTO> findByNome(String nome);
 }
