@@ -19,7 +19,7 @@ import java.util.List;
  * @param <Long> O tipo de dado da chave primária da entidade FornecedorModel.
  */
 public interface FornecedorRepository extends JpaRepository<FornecedorModel, Long>{
-    
+
     @Query("select f from FornecedorModel f where lower(f.razaoSocial) like lower(concat('%', ?1, '%'))")
     List<FornecedorModel> findByRazaoSocial(String razaoSocial);
 
