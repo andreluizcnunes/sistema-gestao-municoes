@@ -5,19 +5,21 @@ import LeftBar from "../../../components/LerftBar"
 import HeaderMarca from "../components/HeaderMarca";
 import FormMarca from "../components/FormMarca";
 import { useState } from "react";
+import AlertDialog from "../../../components/AlertDialog";
 
-function PainelMarcaCadastrar(){
+function PainelMarcaCadastrar() {
 
     const marca = {
-        nome: '' ,
+        nome: '',
     }
 
     const [marcas, setMarcas] = useState([]);
     const [objMarca, setObjMarca] = useState(marca);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
 
-    const getInputForm = (e) =>{
-        setObjMarca({ ...objMarca, [e.target.name]:e.target.value});
+    const getInputForm = (e) => {
+        setObjMarca({ ...objMarca, [e.target.name]: e.target.value });
     }
 
 
@@ -31,35 +33,48 @@ function PainelMarcaCadastrar(){
             }
         })
 
-        .then(retorno => retorno.json())
-        .then(retorno_convertido => {
+            .then(retorno => retorno.json())
+            .then(retorno_convertido => {
 
-            if(retorno_convertido.mensagem != undefined) {
-                alert(retorno_convertido.mensagem);
-            }else{
-                setMarcas([...marcas, retorno_convertido]);
-                alert("Marca Cadastrada com Sucesso!");
-                limparFormulario();
-            }
+                if (retorno_convertido.mensagem != undefined) {
+                    openModal();
+                } else {
+                    setMarcas([...marcas, retorno_convertido]);
+                    openModal();
+                    limparFormulario();
+                }
 
-        })
+            })
+        openModal();
     }
 
     //Limpar formulario
-  const limparFormulario = () => {
-    setObjMarca(marca);
-  }
+    const limparFormulario = () => {
+        setObjMarca(marca);
+    }
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        limparFormulario();
+    };
 
 
-    return(
+    return (
         <CMain>
-            <TopBar/>
+            <TopBar />
             <ContentMain>
-                <LeftBar/>
+                <LeftBar />
                 <CSection>
-                    <HeaderMarca  titulo={"Cadastrar Marca"} />
-                    <FormMarca getDadosForm={getInputForm} cadastrar={cadastrarMarca} obj={objMarca}/>
+                    <HeaderMarca titulo={"Cadastrar Marca"} />
+                    <FormMarca getDadosForm={getInputForm} cadastrar={cadastrarMarca} obj={objMarca} />
                 </CSection>
+                {isModalOpen && (
+                    <AlertDialog message={"Cadastro realizado com Sucesso!"} onCancel={closeModal}/>
+                )}
             </ContentMain>
         </CMain>
     );
