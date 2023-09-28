@@ -6,6 +6,7 @@ import TopBar from "../../../components/TopBar";
 import LeftBar from "../../../components/LerftBar"
 import HeaderMunicao from "../components/HeaderMunicao";
 import FormMunicao from "../components/FormMunicao";
+import AlertDialog from "../../../components/AlertDialog";
 
 function PainelMunicaoCadastrar(){
 
@@ -21,24 +22,25 @@ function PainelMunicaoCadastrar(){
 
     const [municoes, setMunicoes] = useState([]);
     const [objMunicao, setObjMunicao] = useState(municao);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const getInputForm = (e) =>{
         const { name, value } = e.target;
-    setObjMunicao((prevMunicao) => {
-        if (name === 'marca') {
-            return {
-                ...prevMunicao,
-                marca: {
-                    id: value
-                }
-            };
-        } else {
-            return {
-                ...prevMunicao,
-                [name]: value
-            };
-        }
-    });
+        setObjMunicao((prevMunicao) => {
+            if (name === 'marca') {
+                return {
+                    ...prevMunicao,
+                    marca: {
+                        id: value
+                    }
+                };
+            } else {
+                return {
+                    ...prevMunicao,
+                    [name]: value
+                };
+            }
+        });
     }
 
     const cadastrarMunicao = () => {
@@ -62,26 +64,30 @@ function PainelMunicaoCadastrar(){
             }
     
         })
+        .then(retorno => retorno.json())
         .then(retorno_convertido => {
-            if (typeof retorno_convertido === 'string') {
-                // Se a resposta for uma string, é uma mensagem de erro
-                alert(retorno_convertido);
-            } else {
-                // Caso contrário, trata como uma resposta JSON válida
+            if(retorno_convertido.mensagem != undefined){
+                openModal();
+            }else{
                 setMunicoes([...municoes, retorno_convertido]);
-                alert("Munição Cadastrada com Sucesso!");
                 limparFormulario();
             }
         })
-        .catch(error => {
-            console.error('Erro na solicitação:', error);
-            // Trate o erro aqui, por exemplo, mostre uma mensagem ao usuário
-        });
+        openModal();
     }
 
     const limparFormulario = () => {
         setObjMunicao(municao);
     }
+
+    const openModal = () =>{
+        setIsModalOpen(true);
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        limparFormulario();
+    };
     
     return(
         <CMain>
@@ -96,6 +102,9 @@ function PainelMunicaoCadastrar(){
                         obj={objMunicao}
                     />
                 </CSection>
+                {isModalOpen && (
+                    <AlertDialog message={"Cadastro realizado com Sucesso!"} onCancel={closeModal}/>
+                )}
             </ContentMain>
         </CMain>
     );
