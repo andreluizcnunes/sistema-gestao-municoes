@@ -1,5 +1,10 @@
-import { CTabela } from "./TabelaMarca.styled"
 import { useEffect, useState } from "react";
+
+import { 
+    CTabela, 
+    GroupButton, 
+    ButtonEdit, 
+    ButtonDelete } from "./TabelaMarca.styled"
 
 import ModalEditarMarca from "../ModelEditarMarca"
 
@@ -56,11 +61,6 @@ function TabelaMarca({ vetor }) {
             <CTabela>
                 <thead>
                     <tr>
-                        <th colSpan="4">
-                            Marcas Recentes
-                        </th>
-                    </tr>
-                    <tr>
                         <th>#</th>
                         <th>Nome</th>
                         <th>Ações</th>
@@ -73,12 +73,14 @@ function TabelaMarca({ vetor }) {
                                 <td>{indice + 1}</td>
                                 <td>{obj.nome}</td>
                                 <td>
-                                    <button onClick={() => openModal(obj)}>
-                                        Editar
-                                    </button>
-                                    <button onClick={() => { remover(obj.id) }}>
-                                        Deletar
-                                    </button>
+                                    <GroupButton>
+                                        <ButtonEdit onClick={() => openModal(obj)}>
+                                            Editar
+                                        </ButtonEdit>
+                                        <ButtonDelete onClick={() => { remover(obj.id) }}>
+                                            Deletar
+                                        </ButtonDelete>
+                                    </GroupButton>
                                 </td>
                             </tr>
                         ))
