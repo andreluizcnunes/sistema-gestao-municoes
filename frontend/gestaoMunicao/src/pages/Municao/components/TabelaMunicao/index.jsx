@@ -1,26 +1,28 @@
 import { useEffect, useState } from "react";
 
-import { CTabela } from "./TabelaMunicao.styled"
+import { CTabela, GroupButton, ButtonEdit, ButtonDelete } from "./TabelaMunicao.styled"
 
 import ModalEditarMunicao from "../ModalEditarMunicao"
+import AlertDialogDelete from "../../../../components/AlertDialogDelete";
 
 function TabelaMunicao({ vetor }) {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedMunicao, setSelectedMunicao] = useState(null);
+    const [showConfirmation, setShowConfirmation] = useState(false); // Novo estado para controlar o alerta
 
     useEffect(() => {
-        
-        if(isModalOpen === true){
+
+        if (isModalOpen === true) {
             document.body.style.overflow = 'hidden';
-        }else{
+        } else {
             document.body.style.overflow = 'auto';
         }
 
-    }, [isModalOpen])
+    }, [isModalOpen, showConfirmation])
 
-    const openModal = (marca) => {
-        setSelectedMunicao(marca);
+    const openModal = (municao) => {
+        setSelectedMunicao(municao);
         setIsModalOpen(true);
     };
 
@@ -29,14 +31,25 @@ function TabelaMunicao({ vetor }) {
         setIsModalOpen(false);
     };
 
-    const handleEditSave = (editedMunicao) => {
-        // Faça a lógica para salvar as informações editadas do fornecedor aqui
-        console.log("Marca editado:", editedMunicao);
+    const handleEditSave = () => {
         closeModal();
     };
 
+    const handleDeleteCancel = () => {
+        // Feche o alerta de confirmação
+        setShowConfirmation(false);
+    };
 
-    const remover = (indice) => {
+    const handleDeleteClick = (municao) => {
+        // Exiba o alerta de confirmação quando o botão "Deletar" for clicado
+        setShowConfirmation(true);
+        setSelectedMunicao(municao);
+    };
+
+    const handleDeleteConfirmation = () => {
+        // Faça a lógica de exclusão após a confirmação
+        const indice = selectedMunicao.id;// Suponho que o ID esteja em selectedUsuario.id
+
         fetch(`http://localhost:8080/municao/deletar/${indice}`, {
             method: 'delete',
             headers: {
@@ -45,22 +58,18 @@ function TabelaMunicao({ vetor }) {
             }
         })
             .then(retorno => retorno.json())
-            .then(retorno_convertido => {
+            .then(() => {
+                window.location.reload();
+            });
 
-                // mensagem de sucesso
-                alert("Removido com sucesso!");
-            })
+        // Feche o alerta de confirmação após a exclusão
+        setShowConfirmation(false);
     }
 
     return (
         <>
             <CTabela>
                 <thead>
-                    <tr>
-                        <th colSpan="6">
-                            Tabela de Munições
-                        </th>
-                    </tr>
                     <tr>
                         <th>#</th>
                         <th>Nome</th>
@@ -72,7 +81,7 @@ function TabelaMunicao({ vetor }) {
                 </thead>
                 <tbody>
                     {
-                        vetor.map((obj, indice) => (
+                        vetor.slice(0, 10).map((obj, indice) => (
                             <tr key={indice}>
                                 <td>{indice + 1}</td>
                                 <td>{obj.nome}</td>
@@ -80,12 +89,15 @@ function TabelaMunicao({ vetor }) {
                                 <td>{obj.quantidade}</td>
                                 <td>{obj.marca}</td>
                                 <td>
-                                    <button onClick={() => openModal(obj)}>
-                                        Editar
-                                    </button>
-                                    <button onClick={() => { remover(obj.id) }}>
-                                        Deletar
-                                    </button>
+                                    <GroupButton>
+                                        <ButtonEdit onClick={() => openModal(obj)}>
+                                            Editar
+                                        </ButtonEdit>
+                                        <ButtonDelete onClick={() => handleDeleteClick(obj)}>
+                                            Deletar
+                                        </ButtonDelete>
+                                    </GroupButton>
+
                                 </td>
                             </tr>
                         ))
@@ -97,6 +109,14 @@ function TabelaMunicao({ vetor }) {
                     marca={selectedMunicao}
                     onClose={closeModal}
                     onSave={handleEditSave}
+                />
+            )}
+            {showConfirmation && (
+                <AlertDialogDelete
+                    message={"Você tem certeza que deseja deletar a Munição?"}
+                    obj={selectedMunicao.nome}
+                    onCancel={handleDeleteCancel}
+                    onConfirm={handleDeleteConfirmation}
                 />
             )}
         </>
