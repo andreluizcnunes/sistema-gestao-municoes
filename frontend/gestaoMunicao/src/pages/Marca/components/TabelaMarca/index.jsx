@@ -125,7 +125,7 @@ function TabelaMarca({ vetor }) {
 
             {showConfirmation && (
                 <AlertDialogDelete
-                    message={"Você tem certeza que deseja deletar o usuário?"}
+                    message={"Você tem certeza que deseja deletar a Marca?"}
                     obj={selectedMarca.nome}
                     onCancel={handleDeleteCancel}
                     onConfirm={handleDeleteConfirmation}
