@@ -75,8 +75,6 @@ function TabelaPolicial({ vetor }) {
                         <th>#</th>
                         <th>Nome</th>
                         <th>CPF</th>
-                        <th>RG</th>
-                        <th>Data Nascimento</th>
                         <th>Telefone</th>
                         <th>Ações</th>
                     </tr>
@@ -88,8 +86,6 @@ function TabelaPolicial({ vetor }) {
                                 <td>{indice + 1}</td>
                                 <td>{obj.nome}</td>
                                 <td>{obj.cpf}</td>
-                                <td>{obj.rg}</td>
-                                <td>{obj.dataNascimento}</td>
                                 <td>{obj.telefone}</td>
                                 <td>
                                     <GroupButton>
