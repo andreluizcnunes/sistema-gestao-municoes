@@ -81,13 +81,6 @@ public class MunicaoService {
             // Retorna uma resposta com status de erro
             return new ResponseEntity<SmsResponse>(smsResponse, HttpStatus.BAD_REQUEST);
 
-        } else if (municao.getPeso().equals("")) {
-            // Verifica se o Peso do usuário está vazio
-            // Define uma mensagem de erro
-            smsResponse.setMessage("O campo 'Peso' é obrigatório");
-            // Retorna uma resposta com status de erro
-            return new ResponseEntity<SmsResponse>(smsResponse, HttpStatus.BAD_REQUEST);
-
         }
         return null; // Retorna null em caso de sucesso na validação
     }

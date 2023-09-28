@@ -29,9 +29,6 @@ public class MunicaoModel {
     @Column(name = "calibre_municao", nullable = false)
     private String calibre;
 
-    @Column(name = "peso_municao", nullable = false)
-    private String peso;
-
     @Column(name = "quantidade_municao")
     private long quantidade;
 
