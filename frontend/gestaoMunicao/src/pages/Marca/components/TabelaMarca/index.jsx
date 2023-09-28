@@ -96,7 +96,7 @@ function TabelaMarca({ vetor }) {
                 </thead>
                 <tbody>
                     {
-                        vetor.map((obj, indice) => (
+                        vetor.slice(0, 10).map((obj, indice) => (
                             <tr key={indice}>
                                 <td>{indice + 1}</td>
                                 <td>{obj.nome}</td>
