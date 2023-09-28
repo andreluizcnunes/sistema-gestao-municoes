@@ -30,7 +30,7 @@ public class MunicaoModel {
     private String calibre;
 
     @Column(name = "peso_municao", nullable = false)
-    private Double peso;
+    private String peso;
 
     @Column(name = "quantidade_municao")
     private long quantidade;
