@@ -119,7 +119,7 @@ function TabelaFonecedor({ vetor }) {
             {showConfirmation && (
                 <AlertDialogDelete
                     message={"Você tem certeza que deseja deletar o Fornecedor?"}
-                    obj={selectedFornecedor.nome}
+                    obj={selectedFornecedor.razaoSocial}
                     onCancel={handleDeleteCancel}
                     onConfirm={handleDeleteConfirmation}
                 />
