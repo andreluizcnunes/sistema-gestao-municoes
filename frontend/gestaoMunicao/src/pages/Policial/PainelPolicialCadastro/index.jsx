@@ -1,10 +1,13 @@
+import { useState } from "react";
+
 import { CMain, ContentMain, CSection } from "./PolicialCadastrar.styled"
 
 import TopBar from "../../../components/TopBar";
 import LeftBar from "../../../components/LerftBar"
 import HeaderPolicial from "../components/HeaderPolicial";
 import FormPolicial from "../components/FormPolicial";
-import { useState } from "react";
+
+import AlertDialog from "../../../components/AlertDialog";
 
 function PainelPolicialCadastro(){
 
@@ -18,6 +21,7 @@ function PainelPolicialCadastro(){
 
     const [policiais, setPoliciais] = useState([]);
     const [objPolicial, setObjPolicial] = useState(policial);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const getInputForm = (e) =>{
         setObjPolicial({ ...objPolicial, [e.target.name]:e.target.value});
@@ -36,18 +40,28 @@ function PainelPolicialCadastro(){
         .then(retorno => retorno.json())
         .then(retorno_convertido => {
             if(retorno_convertido.mensagem != undefined){
-                alert(retorno_convertido.mensagem);
+                openModal();
             }else{
                 setPoliciais([ ...policiais, retorno_convertido]);
-                alert("Policial Cadastrado com Sucesso!");
                 limparFormulario();
             }
         })
+
+        openModal();
     }
 
     const limparFormulario = () => {
         setObjPolicial(policial);
     }
+
+    const openModal = () =>{
+        setIsModalOpen(true);
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        limpaFormulario();
+    };
 
 
     return(
@@ -59,6 +73,9 @@ function PainelPolicialCadastro(){
                     <HeaderPolicial  titulo={"Cadastrar Policial"} />
                     <FormPolicial getDadosForm={getInputForm} cadastrar={cadastrarPolicial} obj={objPolicial}/>
                 </CSection>
+                {isModalOpen && (
+                    <AlertDialog message={"Cadastro realizado com Sucesso!"} onCancel={closeModal}/>
+                )}
             </ContentMain>
         </CMain>
     );
