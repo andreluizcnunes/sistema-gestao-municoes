@@ -24,31 +24,19 @@ function FormUsuario({ getDadosForm, cadastrar, obj }) {
 
         // Valide os campos aqui e atualize o estado isFormValid
         const { name, value } = e.target;
+        const updatedObj = {
+            ...obj,
+            [name]: value
+        };
 
-        if (
-            name === 'nome' &&
-            value.trim() !== '' &&
-            isEmailValid(obj.email) && // Verificar se o email é válido
-            obj.senha !== ''
-        ) {
-            setIsFormValid(true);
-        } else if (
-            name === 'email' &&
-            obj.nome !== '' &&
-            value.trim() !== '' &&
-            isEmailValid(value) // Verificar se o email é válido
-        ) {
-            setIsFormValid(true);
-        } else if (
-            name === 'senha' &&
-            obj.nome !== '' &&
-            isEmailValid(obj.email) && // Verificar se o email é válido
-            value.trim() !== ''
-        ) {
-            setIsFormValid(true);
-        } else {
-            setIsFormValid(false);
-        }
+        const areFieldsFilled =
+            updatedObj.nome.trim() !== '' &&
+            updatedObj.email.trim() !== '' &&
+            updatedObj.senha.trim() !== '';
+
+        const isEmailFieldValid = isEmailValid(updatedObj.email);
+
+        setIsFormValid(areFieldsFilled && isEmailFieldValid);
     };
 
     return (
