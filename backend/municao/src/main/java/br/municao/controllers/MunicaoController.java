@@ -3,6 +3,7 @@ package br.municao.controllers;
 import br.municao.dto.MunicaoDTO;
 import br.municao.models.MarcaModel;
 import br.municao.models.MunicaoModel;
+import br.municao.response.SmsResponse;
 import br.municao.services.MarcaService;
 import br.municao.services.MunicaoService;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/municao")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:5173")
 public class MunicaoController {
 
     private final MunicaoService municaoService;
@@ -56,5 +57,10 @@ public class MunicaoController {
     @PutMapping("/editar")
     public ResponseEntity<?> updateMunicao(@RequestBody MunicaoModel municao){
         return municaoService.updateMunicao(municao);
+    }
+
+    @DeleteMapping("/deletar/{id}")
+    public ResponseEntity<SmsResponse> deletarMunicaoId(@PathVariable Long id){
+        return municaoService.deleteMunicao(id);
     }
 }
