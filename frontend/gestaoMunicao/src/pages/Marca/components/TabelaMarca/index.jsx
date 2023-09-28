@@ -1,23 +1,26 @@
 import { useEffect, useState } from "react";
 
-import { 
-    CTabela, 
-    GroupButton, 
-    ButtonEdit, 
-    ButtonDelete } from "./TabelaMarca.styled"
+import {
+    CTabela,
+    GroupButton,
+    ButtonEdit,
+    ButtonDelete
+} from "./TabelaMarca.styled"
 
 import ModalEditarMarca from "../ModelEditarMarca"
+import AlertDialogDelete from "../../../../components/AlertDialogDelete";
 
 function TabelaMarca({ vetor }) {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedMarca, setSelectedMarca] = useState(null);
+    const [showConfirmation, setShowConfirmation] = useState(false); // Novo estado para controlar o alerta
 
     useEffect(() => {
-        
-        if(isModalOpen === true){
+
+        if (isModalOpen === true) {
             document.body.style.overflow = 'hidden';
-        }else{
+        } else {
             document.body.style.overflow = 'auto';
         }
 
@@ -35,12 +38,36 @@ function TabelaMarca({ vetor }) {
 
     const handleEditSave = (editedMarca) => {
         // Faça a lógica para salvar as informações editadas do fornecedor aqui
-        console.log("Marca editado:", editedMarca);
         closeModal();
     };
 
+    const handleDeleteCancel = () => {
+        // Feche o alerta de confirmação
+        setShowConfirmation(false);
+    };
 
-    const remover = (indice) => {
+    const handleDeleteClick = (marca) => {
+        // Exiba o alerta de confirmação quando o botão "Deletar" for clicado
+        setShowConfirmation(true);
+        setSelectedMarca(marca);
+    };
+
+    useEffect(() => {
+
+        if (isModalOpen === true || showConfirmation === true) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+
+    }, [isModalOpen, showConfirmation])
+
+
+    const handleDeleteConfirmation = () => {
+
+        // Faça a lógica de exclusão após a confirmação
+        const indice = selectedMarca.id; // Suponho que o ID esteja em selectedUsuario.id
+
         fetch(`http://localhost:8080/marca/deletar/${indice}`, {
             method: 'delete',
             headers: {
@@ -48,12 +75,13 @@ function TabelaMarca({ vetor }) {
                 'Accept': 'application/json'
             }
         })
-            .then(retorno => retorno.json())
-            .then(retorno_convertido => {
+        .then(retorno => retorno.json())
+        .then(() => {
+            window.location.reload();
+        });
 
-                // mensagem de sucesso
-                alert("Removido com sucesso!");
-            })
+        // Feche o alerta de confirmação após a exclusão
+        setShowConfirmation(false);
     }
 
     return (
@@ -77,7 +105,7 @@ function TabelaMarca({ vetor }) {
                                         <ButtonEdit onClick={() => openModal(obj)}>
                                             Editar
                                         </ButtonEdit>
-                                        <ButtonDelete onClick={() => { remover(obj.id) }}>
+                                        <ButtonDelete onClick={() => handleDeleteClick(obj)}>
                                             Deletar
                                         </ButtonDelete>
                                     </GroupButton>
@@ -92,6 +120,15 @@ function TabelaMarca({ vetor }) {
                     marca={selectedMarca}
                     onClose={closeModal}
                     onSave={handleEditSave}
+                />
+            )}
+
+            {showConfirmation && (
+                <AlertDialogDelete
+                    message={"Você tem certeza que deseja deletar o usuário?"}
+                    obj={selectedMarca.nome}
+                    onCancel={handleDeleteCancel}
+                    onConfirm={handleDeleteConfirmation}
                 />
             )}
         </>
