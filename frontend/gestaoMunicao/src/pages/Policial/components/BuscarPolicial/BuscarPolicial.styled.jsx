@@ -30,22 +30,6 @@ export const Cmain = styled.form`
             filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
         }
     }
-
-    button{
-        width: 20%;
-        padding: .7rem 1.2rem;
-        border: none;
-        border-radius: 20px;
-        background: #4B4B4B;
-        color: #fff;
-        font-size: 2.5rem;
-        cursor: pointer;
-        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-
-        &:hover{
-            background: #037903;
-        }
-    }
 `;
 
 export const BuscarMunicao = styled.label`
