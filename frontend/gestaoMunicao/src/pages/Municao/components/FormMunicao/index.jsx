@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Cmain, NomeMunicao, Marca, GroupInput, Calibre, Peso } from './FormMunicao.styled';
+import { Cmain, 
+    NomeMunicao, 
+    Marca, 
+    GroupInput, 
+    Calibre, 
+    Peso, 
+    ButtonBlock } from './FormMunicao.styled';
 
 function FormMunicao({ getDadosForm, cadastrar, obj }) {
 
     const [marcas, setMarcas] = useState([]);
+    const [isFormValid, setIsFormValid] = useState(false);
 
     useEffect(() => {
         fetch("http://localhost:8080/marca/listar")
@@ -11,14 +18,31 @@ function FormMunicao({ getDadosForm, cadastrar, obj }) {
             .then(retornoConvertido => setMarcas(retornoConvertido));
     }, []);
 
-    const handleInputChange = (event) => {
-        if (event.target.name === "marca") {
-            // Agora, apenas atualizamos o estado obj.marca.id com o valor selecionado
-            const marcaSelecionada = event.target.value;
-            getDadosForm(event); // Isso ainda atualiza os outros campos no estado obj
-        } else {
-            getDadosForm(event);
+    const handleSubmit = (e) => {
+        e.preventDefault(); // Evite a submissão padrão do formulário
+        if (isFormValid) {
+            cadastrar(); // Chame a função de cadastro;
+            window.location.reload();
         }
+    };
+
+    const handleInputChange = (e) => {
+        getDadosForm(e);
+
+    // Valide os campos aqui e atualize o estado isFormValid
+    const { name, value } = e.target;
+    const updatedObj = {
+        ...obj,
+        [name]: value
+    };
+
+    const areFieldsFilled =
+        updatedObj.nome.trim() !== '' &&
+        updatedObj.calibre.trim() !== '' &&
+        updatedObj.peso.trim() !== '' &&
+        updatedObj.marca.id !== 0; // Verifique se obj.marca.id existe
+
+        setIsFormValid(areFieldsFilled);
     };
 
 
@@ -33,7 +57,7 @@ function FormMunicao({ getDadosForm, cadastrar, obj }) {
                     name='nome'
                     id='nome'
                     placeholder='Digite o Nome da Munição'
-                    onChange={getDadosForm}
+                    onChange={handleInputChange}
                     value={obj.nome}
                     required
                 />
@@ -49,7 +73,7 @@ function FormMunicao({ getDadosForm, cadastrar, obj }) {
                         name='calibre'
                         id='calibre'
                         placeholder='Digite o Calibre'
-                        onChange={getDadosForm}
+                        onChange={handleInputChange}
                         value={obj.calibre}
                         required
                     />
@@ -64,7 +88,7 @@ function FormMunicao({ getDadosForm, cadastrar, obj }) {
                         name='peso'
                         id='peso'
                         placeholder='Digite o Peso'
-                        onChange={getDadosForm}
+                        onChange={handleInputChange}
                         value={obj.peso}
                     />
                 </Peso>
@@ -90,9 +114,15 @@ function FormMunicao({ getDadosForm, cadastrar, obj }) {
             </Marca>
 
 
-            <button onClick={cadastrar} type='submit'>
-                Salvar
-            </button>
+            {!isFormValid ? (
+                <ButtonBlock disabled={!isFormValid}>
+                    X Salvar
+                </ButtonBlock>
+            ) : (
+                <button onClick={handleSubmit} type='submit'>
+                    Salvar
+                </button>
+            )}
         </Cmain>
     );
 }
