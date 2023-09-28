@@ -5,13 +5,11 @@ import br.municao.models.EntradaMunicaoModel;
 import br.municao.services.EmprestimoMunicaoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/emprestimo-municao")
+@CrossOrigin(origins = "http://localhost:5173")
 public class EmprestimoMunicaoController {
 
     private final EmprestimoMunicaoService emprestimoMunicaoService;
