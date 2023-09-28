@@ -1,43 +1,72 @@
 import React, { useEffect, useState } from 'react';
 
-import { ModalWrapper, ModalContent, ContainerButton, Marca } from "./ModalEditarMunicao.styled";
+import {
+    ModalWrapper,
+    ModalContent,
+    ContainerButton,
+    Marca
+} from "./ModalEditarMunicao.styled";
 
-function ModelEditarMunicao({ marca, onClose, onSave }) {
+function ModalEditarMunicao({ municao, onClose, onSave }) {
 
-    const [editedMunicao, setEditedMunicao] = useState(marca);
+    const [editedMunicao, setEditedMunicao] = useState(municao);
     const [marcas, setMarcas] = useState([]);
+    const [idMarcaSelecionada, setIdMarcaSelecionada] = useState('');
+    const [isDirty, setIsDirty] = useState(false);
+
+    // Estados para rastrear erros de validação
+    const [validationErrors, setValidationErrors] = useState({
+        nome: '',
+        calibre: '',
+        marca: {
+            id: 0
+        }
+    });
+
+    useEffect(() => {
+        // Verifique se o objeto 'editedUsuario' é diferente do objeto 'usuario' original
+        const isEdited = JSON.stringify(editedMunicao) !== JSON.stringify(municao);
+        setIsDirty(isEdited);
+    }, [editedMunicao, municao]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setEditedMunicao({ ...editedMunicao, [name]: value });
+        // setEditedPolicial({ ...editedPolicial, [name]: value });
+        setEditedMunicao((prevEditedMunicao) => ({
+            ...prevEditedMunicao,
+            [name]: value,
+        }));
     };
 
-    const handleSave = async () => {
-        try {
-            // Realize a requisição PUT para a rota da API para editar o marca
-            const response = await fetch('http://localhost:8080/municao/editar', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(editedMunicao),
-            });
-
-            if (response.ok) {
-                // Se a requisição for bem-sucedida, chame a função onSave para atualizar o marca no estado pai
-                onSave(editedMunicao);
-                onClose();
-                window.location.reload();
-            } else {
-                // Trate os erros da API, se necessário
-                console.error('Erro ao editar Municção');
-            }
-        } catch (error) {
-            // Trate erros de rede ou outros erros aqui
-            console.error('Erro ao editar Munição:', error);
+    // Função de validação para o campo "Nome do Policial"
+    const validateNome = () => {
+        if (!editedMunicao.nome) {
+            setValidationErrors((prevErrors) => ({
+                ...prevErrors,
+                nome: 'O nome da Munição é obrigatório.',
+            }));
+        } else {
+            setValidationErrors((prevErrors) => ({
+                ...prevErrors,
+                nome: '',
+            }));
         }
     };
 
+    // Função de validação para o campo "Nome do Policial"
+    const validateCalibre = () => {
+        if (!editedMunicao.calibre) {
+            setValidationErrors((prevErrors) => ({
+                ...prevErrors,
+                calibre: 'O calibre é obrigatório.',
+            }));
+        } else {
+            setValidationErrors((prevErrors) => ({
+                ...prevErrors,
+                calibre: '',
+            }));
+        }
+    };
 
     useEffect(() => {
         fetch("http://localhost:8080/marca/listar")
@@ -45,13 +74,47 @@ function ModelEditarMunicao({ marca, onClose, onSave }) {
             .then(retornoConvertido => setMarcas(retornoConvertido));
     }, []);
 
-    const handleInputChangeMarca = (event) => {
-        if (event.target.name === "marca") {
-            // Agora, apenas atualizamos o estado obj.marca.id com o valor selecionado
-            const marcaSelecionada = event.target.value;
-            getDadosForm(event); // Isso ainda atualiza os outros campos no estado obj
-        } else {
-            getDadosForm(event);
+    const handleSave = async () => {
+        // Validar os campos antes de tentar salvar
+        validateNome();
+        validateCalibre();
+    
+        // Verificar se há erros de validação
+        if (
+            validationErrors.nome ||
+            validationErrors.calibre
+        ) {
+            return; // Impedir que o salvamento continue se houver erros
+        }
+    
+        try {
+            const editedMunicaoToSend = {
+                ...editedMunicao,
+                marca: {
+                    id: idMarcaSelecionada
+                }, // Usar o ID da marca selecionada
+            };
+    
+            const response = await fetch('http://localhost:8080/municao/editar', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(editedMunicaoToSend),
+            });
+    
+            if (response.ok) {
+                // Se a requisição for bem-sucedida, chame a função onSave para atualizar a munição no estado pai
+                onSave(editedMunicaoToSend);
+                onClose();
+                window.location.reload();
+            } else {
+                // Trate os erros da API, se necessário
+                console.error('Erro ao editar Munição');
+            }
+        } catch (error) {
+            // Trate erros de rede ou outros erros aqui
+            console.error('Erro ao editar Munição:', error);
         }
     };
 
@@ -65,14 +128,16 @@ function ModelEditarMunicao({ marca, onClose, onSave }) {
                     name="nome"
                     value={editedMunicao.nome}
                     onChange={handleInputChange}
+                    onBlur={validateNome} // Validar ao perder o foco
                 />
 
                 <label>Calibre:</label>
                 <input
                     type="text"
-                    name="nome"
+                    name="calibre"
                     value={editedMunicao.calibre}
                     onChange={handleInputChange}
+                    onBlur={validateCalibre} // Validar ao perder o foco
                 />
 
                 <Marca>
@@ -80,9 +145,10 @@ function ModelEditarMunicao({ marca, onClose, onSave }) {
                         Marca: <span>(Campo Obrigatório)</span>
                     </p>
                     <select
-                        name='marca'
-                        value={editedMunicao.marca.id}
-                        onChange={handleInputChangeMarca}
+                        name="marca"
+                        value={idMarcaSelecionada}
+                        onChange={(e) => setIdMarcaSelecionada(e.target.value)}
+                    // onBlur={validateMarca} // Validar ao perder o foco
                     >
 
                         <option value="">Selecione uma Marca</option>
@@ -94,7 +160,7 @@ function ModelEditarMunicao({ marca, onClose, onSave }) {
                     </select>
                 </Marca>
                 <ContainerButton>
-                    <button onClick={handleSave}>Salvar</button>
+                    <button onClick={handleSave} disabled={!isDirty}>Salvar</button>
                     <button onClick={onClose}>Cancelar</button>
                 </ContainerButton>
             </ModalContent>
@@ -102,4 +168,4 @@ function ModelEditarMunicao({ marca, onClose, onSave }) {
     );
 }
 
-export default ModelEditarMunicao;
+export default ModalEditarMunicao;

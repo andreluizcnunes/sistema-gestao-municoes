@@ -106,7 +106,7 @@ function TabelaMunicao({ vetor }) {
             </CTabela>
             {isModalOpen && (
                 <ModalEditarMunicao
-                    marca={selectedMunicao}
+                    municao={selectedMunicao}
                     onClose={closeModal}
                     onSave={handleEditSave}
                 />

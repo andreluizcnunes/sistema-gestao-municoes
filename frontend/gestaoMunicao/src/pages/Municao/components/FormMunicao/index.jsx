@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Cmain, 
-    NomeMunicao, 
-    Marca, 
-    GroupInput, 
-    Calibre, 
-    Peso, 
-    ButtonBlock } from './FormMunicao.styled';
+import {
+    Cmain,
+    NomeMunicao,
+    Marca,
+    GroupInput,
+    Calibre,
+    ButtonBlock
+} from './FormMunicao.styled';
 
 function FormMunicao({ getDadosForm, cadastrar, obj }) {
 
@@ -29,18 +30,17 @@ function FormMunicao({ getDadosForm, cadastrar, obj }) {
     const handleInputChange = (e) => {
         getDadosForm(e);
 
-    // Valide os campos aqui e atualize o estado isFormValid
-    const { name, value } = e.target;
-    const updatedObj = {
-        ...obj,
-        [name]: value
-    };
+        // Valide os campos aqui e atualize o estado isFormValid
+        const { name, value } = e.target;
+        const updatedObj = {
+            ...obj,
+            [name]: value
+        };
 
-    const areFieldsFilled =
-        updatedObj.nome.trim() !== '' &&
-        updatedObj.calibre.trim() !== '' &&
-        updatedObj.peso.trim() !== '' &&
-        updatedObj.marca.id !== 0; // Verifique se obj.marca.id existe
+        const areFieldsFilled =
+            updatedObj.nome.trim() !== '' &&
+            updatedObj.calibre.trim() !== '' &&
+            updatedObj.marca.id !== 0; // Verifique se obj.marca.id existe
 
         setIsFormValid(areFieldsFilled);
     };
@@ -79,40 +79,26 @@ function FormMunicao({ getDadosForm, cadastrar, obj }) {
                     />
                 </Calibre>
 
-                <Peso htmlFor="Peso">
+                <Marca>
                     <p>
-                        Peso:
+                        Marca: <span>(Campo Obrigatório)</span>
                     </p>
-                    <input
-                        type="text"
-                        name='peso'
-                        id='peso'
-                        placeholder='Digite o Peso'
+                    <select
+                        name='marca'
+                        value={obj.marca.id}
                         onChange={handleInputChange}
-                        value={obj.peso}
-                    />
-                </Peso>
+                    >
+
+                        <option value="">Selecione uma Marca</option>
+                        {marcas.map(marca => (
+                            <option key={marca.id} value={marca.id}>
+                                {marca.nome}
+                            </option>
+                        ))}
+                    </select>
+                </Marca>
+
             </GroupInput>
-
-            <Marca>
-                <p>
-                    Marca: <span>(Campo Obrigatório)</span>
-                </p>
-                <select
-                    name='marca' 
-                    value={obj.marca.id} 
-                    onChange={handleInputChange}
-                >
-
-                    <option value="">Selecione uma Marca</option>
-                    {marcas.map(marca => (
-                        <option key={marca.id} value={marca.id}>
-                            {marca.nome}
-                        </option>
-                    ))}
-                </select>
-            </Marca>
-
 
             {!isFormValid ? (
                 <ButtonBlock disabled={!isFormValid}>
