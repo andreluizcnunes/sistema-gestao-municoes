@@ -60,7 +60,7 @@ function PainelPolicialCadastro(){
 
     const closeModal = () => {
         setIsModalOpen(false);
-        limpaFormulario();
+        limparFormulario();
     };
 
 
