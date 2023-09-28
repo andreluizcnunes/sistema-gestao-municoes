@@ -1,9 +1,10 @@
+import { useEffect, useState } from "react";
+
 import { CMain, ContentMain, CSection } from "./Marca.styled"
 
 import TopBar from "../../../components/TopBar";
 import LeftBar from "../../../components/LerftBar"
 import HeaderMarca from "../components/HeaderMarca";
-import { useEffect, useState } from "react";
 import TabelaMarca from "../components/TabelaMarca";
 
 function PainelMarca(){
