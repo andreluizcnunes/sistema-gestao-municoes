@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { CTabela, GroupButton, ButtonEdit, ButtonDelete } from "./TabelaFornecedor.styled"
 
 import ModalEditarFornecedor from "../ModalEditarFornecedor"
+import AlertDialogDelete from "../../../../components/AlertDialogDelete";
 
 function TabelaFonecedor({ vetor }) {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedFornecedor, setSelectedFornecedor] = useState(null);
+    const [showConfirmation, setShowConfirmation] = useState(false); // Novo estado para controlar o alerta
+
 
     const openModal = (fornecedor) => {
         setSelectedFornecedor(fornecedor);
@@ -21,12 +24,35 @@ function TabelaFonecedor({ vetor }) {
 
     const handleEditSave = (editedFornecedor) => {
         // Faça a lógica para salvar as informações editadas do fornecedor aqui
-        console.log("Fornecedor editado:", editedFornecedor);
         closeModal();
     };
 
+    const handleDeleteCancel = () => {
+        // Feche o alerta de confirmação
+        setShowConfirmation(false);
+    };
 
-    const remover = (indice) => {
+    const handleDeleteClick = (fornecedor) => {
+        // Exiba o alerta de confirmação quando o botão "Deletar" for clicado
+        setShowConfirmation(true);
+        setSelectedFornecedor(fornecedor);
+    };
+
+    useEffect(() => {
+
+        if (isModalOpen === true || showConfirmation === true) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+
+    }, [isModalOpen, showConfirmation])
+
+    const handleDeleteConfirmation = () => {
+
+        // Faça a lógica de exclusão após a confirmação
+        const indice = selectedFornecedor.id; // Suponho que o ID esteja em selectedUsuario.id
+
         fetch(`http://localhost:8080/fornecedor/deletar/${indice}`, {
             method: 'delete',
             headers: {
@@ -34,24 +60,19 @@ function TabelaFonecedor({ vetor }) {
                 'Accept': 'application/json'
             }
         })
-            .then(retorno => retorno.json())
-            .then(retorno_convertido => {
+        .then(retorno => retorno.json())
+        .then(() => {
+            window.location.reload();
+        });
 
-                // mensagem de sucesso
-                alert("Removido com sucesso!");
-            })
+        // Feche o alerta de confirmação após a exclusão
+        setShowConfirmation(false);
     }
-
 
     return (
         <>
             <CTabela>
                 <thead>
-                    <tr>
-                        <th colSpan="5">
-                            Fornecedores Recentes
-                        </th>
-                    </tr>
                     <tr>
                         <th>#</th>
                         <th>Razão Social</th>
@@ -62,7 +83,7 @@ function TabelaFonecedor({ vetor }) {
                 </thead>
                 <tbody>
                     {
-                        vetor.map((obj, indice) => (
+                        vetor.slice(0, 10).map((obj, indice) => (
                             <tr key={indice}>
                                 <td>{indice + 1}</td>
                                 <td>{obj.razaoSocial}</td>
@@ -75,7 +96,7 @@ function TabelaFonecedor({ vetor }) {
                                             Editar
                                         </ButtonEdit>
 
-                                        <ButtonDelete onClick={() => { remover(obj.id) }}>
+                                        <ButtonDelete onClick={() => handleDeleteClick(obj)}>
                                             Deletar
                                         </ButtonDelete>
 
@@ -92,6 +113,15 @@ function TabelaFonecedor({ vetor }) {
                     fornecedor={selectedFornecedor}
                     onClose={closeModal}
                     onSave={handleEditSave}
+                />
+            )}
+
+            {showConfirmation && (
+                <AlertDialogDelete
+                    message={"Você tem certeza que deseja deletar o Fornecedor?"}
+                    obj={selectedFornecedor.nome}
+                    onCancel={handleDeleteCancel}
+                    onConfirm={handleDeleteConfirmation}
                 />
             )}
         </>
