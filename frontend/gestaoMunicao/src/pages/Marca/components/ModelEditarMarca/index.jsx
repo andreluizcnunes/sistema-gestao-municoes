@@ -1,17 +1,56 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { ModalWrapper, ModalContent, ContainerButton } from "./ModelEditarMacar.styled"
 
-function ModelEditarMarca({ marca, onClose, onSave }) {
+function ModalEditarMarca({ marca, onClose, onSave }) {
 
     const [editedMarca, setEditedMarca] = useState(marca);
+    const [isDirty, setIsDirty] = useState(false); // Estado para rastrear alterações
+
+    const [validationErrors, setValidationErrors] = useState({
+        nome: ''
+    });
+
+    useEffect(() => {
+        // Verifique se o objeto 'editedUsuario' é diferente do objeto 'usuario' original
+        const isEdited = JSON.stringify(editedMarca) !== JSON.stringify(marca);
+        setIsDirty(isEdited);
+    }, [editedMarca, marca]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setEditedMarca({ ...editedMarca, [name]: value });
+        // setEditedPolicial({ ...editedPolicial, [name]: value });
+        setEditedMarca((prevEditedMarca) => ({
+            ...prevEditedMarca,
+            [name]: value,
+        }));
+    };
+
+    const validateNome = () => {
+        if (!editedMarca.nome) {
+            setValidationErrors((prevErrors) => ({
+                ...prevErrors,
+                nome: 'O nome da Marca é obrigatório.',
+            }));
+        } else {
+            setValidationErrors((prevErrors) => ({
+                ...prevErrors,
+                nome: '',
+            }));
+        }
     };
 
     const handleSave = async () => {
+        // Validar os campos antes de tentar salvar
+        validateNome();
+
+        // Verificar se há erros de validação
+        if (
+            validationErrors.nome
+        ) {
+            return; // Impedir que o salvamento continue se houver erros
+        }
+
         try {
             // Realize a requisição PUT para a rota da API para editar o marca
             const response = await fetch('http://localhost:8080/marca/editar', {
@@ -47,9 +86,10 @@ function ModelEditarMarca({ marca, onClose, onSave }) {
                     name="nome"
                     value={editedMarca.nome}
                     onChange={handleInputChange}
+                    onBlur={validateNome}
                 />
                 <ContainerButton>
-                    <button onClick={handleSave}>Salvar</button>
+                    <button onClick={handleSave} disabled={!isDirty}>Salvar</button>
                     <button onClick={onClose}>Cancelar</button>
                 </ContainerButton>
             </ModalContent>
@@ -57,4 +97,4 @@ function ModelEditarMarca({ marca, onClose, onSave }) {
     );
 }
 
-export default ModelEditarMarca;
+export default ModalEditarMarca;
