@@ -39,6 +39,21 @@ public class MunicaoController {
         return municaoService.getMunicaoByname(nome);
     }
 
+    @GetMapping("/total")
+    public long countTotalController(){
+        return municaoService.countTotal();
+    }
+
+    @GetMapping("/estoqueBaixoUrgente")
+    public long estoqueBaixoCUrgente(){
+        return municaoService.estoqueBaixoS();
+    }
+
+    @GetMapping("/estoqueBaixo")
+    public long estoqueBaixoC(){
+        return municaoService.estoqueBaixoS3000();
+    }
+
     @PostMapping("/cadastrar")
     public ResponseEntity<?> registerNewMunicao(@RequestBody MunicaoModel newMunicao){
         Optional<MarcaModel> marcaOptional = marcaService.getMacarById(newMunicao.getMarca().getId());
