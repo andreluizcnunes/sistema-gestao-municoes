@@ -29,7 +29,7 @@ public class DevolucaoMunicaoService {
 
     public void devolucao(DevolucaoMunicaoPolicalModel devolucao){
         // Supondo que você tenha um critério para identificar a munição, como um ID único.
-        MunicaoModel municao = municaoRepository.findById(devolucao.getMunicao().getId()).orElse(new MunicaoModel()); // Obtém o objeto MunicaoModel existente ou cria um novo.
+        MunicaoModel municao = municaoRepository.findById(devolucao.getEmprestimoMunicao().getMunicao().getId()).orElse(new MunicaoModel()); // Obtém o objeto MunicaoModel existente ou cria um novo.
 
         long quantidadeAtual = municao.getQuantidade();
         long quantidadeNova = devolucao.getQuantidade();
