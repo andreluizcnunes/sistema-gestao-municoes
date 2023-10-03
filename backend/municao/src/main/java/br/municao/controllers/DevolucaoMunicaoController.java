@@ -1,17 +1,14 @@
 package br.municao.controllers;
 
 import br.municao.models.DevolucaoMunicaoPolicalModel;
-import br.municao.models.EntradaMunicaoModel;
 import br.municao.services.DevolucaoMunicaoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/devolucao-municao")
+@CrossOrigin(origins = "http://localhost:5173")
 public class DevolucaoMunicaoController {
 
     private final DevolucaoMunicaoService devolucaoMunicaoService;
