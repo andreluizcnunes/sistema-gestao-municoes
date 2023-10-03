@@ -1,13 +1,24 @@
 import LeftBar from "../../components/LerftBar";
 import TopBar from "../../components/TopBar";
 
-import { CMain } from "./Dashboard.styled"
+import { CMain, ContentMain, CSection } from "./Dashboard.styled"
+
+import Grafico from "./components/Grafico"
+import GraficoEstoqueBaixo from "./components/GraficoEstoqueBaixo";
+import GraficoLinha from "./components/GraficoLinha";
 
 function Dashboard(){
     return(
         <CMain>
             <TopBar/>
-            <LeftBar/>
+            <ContentMain>                
+                <LeftBar/>
+                <CSection>
+                    <Grafico/>
+                    <GraficoLinha/>
+                    <GraficoEstoqueBaixo/>
+                </CSection>
+            </ContentMain>
         </CMain>
     );
 }
