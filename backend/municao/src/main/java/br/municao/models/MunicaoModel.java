@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name = "tb_municao")
-public class MunicaoModel {
+public class MunicaoModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,7 +45,4 @@ public class MunicaoModel {
 
     @OneToMany(mappedBy = "municao")
     private List<EmprestimoMunicaoModel> emprestimoMunicao;
-
-    @OneToOne(mappedBy = "municao")
-    private DevolucaoMunicaoPolicalModel devolucao;
 }

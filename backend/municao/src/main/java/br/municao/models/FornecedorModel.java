@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "tb_fornecedor")
-public class FornecedorModel {
+public class FornecedorModel implements Serializable {
 
     /**
      * O identificador único do fornecedor no banco de dados.

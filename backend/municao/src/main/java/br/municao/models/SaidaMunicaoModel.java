@@ -4,12 +4,13 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Data
 @Table(name = "tb_saida_municao")
-public class SaidaMunicaoModel {
+public class SaidaMunicaoModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
