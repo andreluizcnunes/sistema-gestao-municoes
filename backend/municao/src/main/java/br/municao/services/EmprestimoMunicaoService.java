@@ -1,5 +1,7 @@
 package br.municao.services;
 
+import br.municao.dto.EmprestimoDTO;
+import br.municao.dto.MunicaoDTO;
 import br.municao.models.EmprestimoMunicaoModel;
 import br.municao.models.EntradaMunicaoModel;
 import br.municao.models.MunicaoModel;
@@ -7,6 +9,8 @@ import br.municao.repositories.EmprestimoMunicaoRepository;
 import br.municao.repositories.MunicaoRepository;
 import br.municao.response.SmsResponse;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class EmprestimoMunicaoService {
@@ -34,5 +38,11 @@ public class EmprestimoMunicaoService {
 
         municao.setQuantidade(total);
         emprestimoMunicaoRepository.save(emprestimo);
+    }
+
+    public List<EmprestimoDTO> getAllEmprestimoDTO(){
+        List<EmprestimoMunicaoModel> emprestimo = emprestimoMunicaoRepository.findAll();
+        return emprestimo.stream().map(x -> new EmprestimoDTO(x)).toList();
+
     }
 }
