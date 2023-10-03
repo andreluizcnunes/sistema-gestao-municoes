@@ -12,7 +12,7 @@ function PainelPolicial(){
     const [policiais, setPoliciais] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:8080/policial/lista")
+        fetch("http://localhost:8080/policial/listarDTO")
           .then(retorno => retorno.json())
           .then(retornoConvertido => setPoliciais(retornoConvertido));
     }, []);
