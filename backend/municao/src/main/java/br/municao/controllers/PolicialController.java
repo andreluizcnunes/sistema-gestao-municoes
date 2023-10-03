@@ -21,6 +21,11 @@ public class PolicialController {
     @GetMapping("/lista")
     public List<PolicialModel> getAllPolicial(){return policialService.getAllPolicial();}
 
+    @GetMapping("/listarDTO")
+    public List<PolicialDTO> getAllPolicialDTO(){
+        return policialService.getAllPolicialDTO();
+    }
+
     @GetMapping("/consultar")
     public List<PolicialDTO> getPolicialByNomeDto(@RequestParam(name = "nome") String nome){
         return policialService.getByPolicialForname(nome);
