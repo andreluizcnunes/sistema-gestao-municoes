@@ -4,12 +4,13 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Data
 @Table(name = "tb_devolucao_municao_policial")
-public class DevolucaoMunicaoPolicalModel {
+public class DevolucaoMunicaoPolicalModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,13 +23,6 @@ public class DevolucaoMunicaoPolicalModel {
 
     @Column(name = "quantidade", nullable = false)
     private Long quantidade;
-
-    @Column(name = "motivo_devolucao_parcial")
-    private String motivoDevolucaoParcial;
-
-    @ManyToOne
-    @JoinColumn(name = "id_municao")
-    private MunicaoModel municao;
 
     @ManyToOne
     @JoinColumn(name = "id_policial")
