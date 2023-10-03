@@ -33,5 +33,7 @@ public class EntradaMunicaoService {
         entradaMunicaoRepository.save(newEntrada);
     }
 
-
+    public long countTotal(){
+        return entradaMunicaoRepository.countTotalItems();
+    }
 }
