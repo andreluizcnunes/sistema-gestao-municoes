@@ -1,7 +1,6 @@
 package br.municao.controllers;
 
 import br.municao.models.EntradaMunicaoModel;
-import br.municao.models.MunicaoModel;
 import br.municao.services.EntradaMunicaoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +25,11 @@ public class EntradaMunicaoController {
         } catch (Exception e) {
             return new ResponseEntity<>("Erro ao atualizar o estoque de munição: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping("/total")
+    public long countTotalController(){
+        return entradaMunicaoService.countTotal();
     }
 
 
