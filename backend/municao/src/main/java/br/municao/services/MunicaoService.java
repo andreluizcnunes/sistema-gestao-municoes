@@ -60,6 +60,18 @@ public class MunicaoService {
         return municaoRepository.findByNomeMunicaoDto(nome);
     }
 
+    public long countTotal(){
+        return municaoRepository.countTotalItems();
+    }
+
+    public long estoqueBaixoS(){
+        return municaoRepository.countMunicoesComQuantidadeMenorQue1000();
+    }
+
+    public long estoqueBaixoS3000(){
+        return municaoRepository.countMunicoesComQuantidadeMenorQue3000();
+    }
+
     public ResponseEntity<SmsResponse> deleteMunicao(Long id){
         municaoRepository.deleteById(id);
         smsResponse.setMessage("Munição deletada com sucesso.");
