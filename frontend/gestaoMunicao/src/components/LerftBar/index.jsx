@@ -6,7 +6,8 @@ function LeftBar(){
     return(
         <CLeftBar>
             <ButtonBar link={'/dashboard'} texto={'Inicio'}/>
-            <ButtonBar link={'/lancamento'} texto={'Lançamentos'}/>
+            <ButtonBar link={'/estoque'} texto={'Estoque'}/>
+            <ButtonBar link={'/fluxodiario'} texto={'Fuxo Diário'}/>
             <ButtonBar link={'/municao'} texto={'Munições'}/>
             <ButtonBar link={'/policial'} texto={'Policiais'}/>
             <ButtonBar link={'/fornecedor'} texto={'Fornecedores'}/>
