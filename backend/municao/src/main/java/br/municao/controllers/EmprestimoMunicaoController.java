@@ -1,11 +1,14 @@
 package br.municao.controllers;
 
+import br.municao.dto.EmprestimoDTO;
 import br.municao.models.EmprestimoMunicaoModel;
 import br.municao.models.EntradaMunicaoModel;
 import br.municao.services.EmprestimoMunicaoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/emprestimo-municao")
@@ -26,6 +29,11 @@ public class EmprestimoMunicaoController {
         } catch (Exception e) {
             return new ResponseEntity<>("Erro ao atualizar o estoque de munição: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping("/listarDTO")
+    public List<EmprestimoDTO> getAllEmprestimoByDTO(){
+        return emprestimoMunicaoService.getAllEmprestimoDTO();
     }
 
 }
