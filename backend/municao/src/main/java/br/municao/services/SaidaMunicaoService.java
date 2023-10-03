@@ -33,4 +33,8 @@ public class SaidaMunicaoService {
         municao.setQuantidade(total);
         saidaMunicaoRepository.save(newSaida);
     }
+
+    public long countTotal(){
+        return saidaMunicaoRepository.countTotalItems();
+    }
 }
