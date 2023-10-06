@@ -23,17 +23,25 @@ import PainelUser from "../pages/Usuario/PainelUser";
 import PainelUserCadastro from "../pages/Usuario/PainelUserCadastro";
 import PainelUserLista from "../pages/Usuario/PainelUserLista";
 
-import PainelLancamento from "../pages/Lancamento/PainelLancamento";
+import PainelEstoque from "../pages/Estoque/PainelEstoque";
+import PainelEntradaEstoque from "../pages/Estoque/PainelEntradaEstoque";
+import PainelSaidaEstoque from "../pages/Estoque/PainelSaidaMunicao";
+
+import PainelFluxoDiario from "../pages/FluxoDiario/PainelFluxoDiario";
+import PainelEmprestimoMunicao from "../pages/FluxoDiario/PainelEmprestimoMunicao";
+import PainelDevolucaoMunicao from "../pages/FluxoDiario/PainelDevolucaoMunicao";
+
+
 
 function RoutesApp(){
     return(
         <Routes>
             <Route path='/' element={<Login/>} />
-            <Route path='/dashboard' element={<Dashboard/>} />
+            <Route path='/dashboard' element={ <Dashboard/> } />
 
-            <Route path='/fornecedor' element={<PainelFornecedor/>} />
-            <Route path='/fornecedor/cadastro' element={<PainelFornecedorCadastro/>} />
-            <Route path='/fornecedor/listar' element={<PainelFornecedorLista/>} />
+            <Route path='/fornecedor' element={ <PainelFornecedor/>} />
+            <Route path='/fornecedor/cadastro' element={ <PainelFornecedorCadastro/>} />
+            <Route path='/fornecedor/listar' element={ <PainelFornecedorLista/>} />
 
             <Route path='/marca' element={<PainelMarca/>} />
             <Route path='/marca/cadastro' element={<PainelMarcaCadastrar/>} />
@@ -51,7 +59,14 @@ function RoutesApp(){
             <Route path='/usuario/cadastro' element={<PainelUserCadastro/>} />
             <Route path='/usuario/listar' element={<PainelUserLista/>} />
 
-            <Route path="/lancamento" element={<PainelLancamento/>} />
+            <Route path="/estoque" element={<PainelEstoque/>} />
+            <Route path="/estoque/entrada" element={<PainelEntradaEstoque/>} />
+            <Route path="/estoque/saida" element={<PainelSaidaEstoque/>} />
+            
+            <Route path="/fluxodiario" element={<PainelFluxoDiario/>} />
+            <Route path="/fluxodiario/emprestimo" element={<PainelEmprestimoMunicao/>} />
+            <Route path="/fluxodiario/devolucao" element={<PainelDevolucaoMunicao/>} />
+            
         </Routes>
     );
 }
