@@ -10,6 +10,7 @@ export const CLogin = styled.div`
     form{
         background-color: #1E217C;
         padding-top: 30px;
+        position: relative;
 
         width: 100%;
         max-width: 34.375rem;
@@ -20,6 +21,15 @@ export const CLogin = styled.div`
         flex-direction: column;
         align-items: center;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.50);
+
+
+        p{
+            color: #fd0202;
+            position: absolute;
+            top: 25%;
+            text-align: center;
+            font-size: 1rem;
+        }
         
 
         img{
