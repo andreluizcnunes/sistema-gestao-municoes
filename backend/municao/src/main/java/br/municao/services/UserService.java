@@ -85,6 +85,10 @@ public class UserService {
         return usersRepository.findByUsuarioNameDto(nome);
     }
 
+    public UserModel validate(String email, String senha){
+        return usersRepository.findByEmailAndSenha(email, senha);
+    }
+
     /**
      * Exclui um usuário com base no ID fornecido.
      *
