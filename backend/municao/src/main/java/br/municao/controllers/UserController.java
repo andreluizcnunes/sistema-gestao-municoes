@@ -1,9 +1,11 @@
 package br.municao.controllers;
 
+import br.municao.dto.UserCredentialsDTO;
 import br.municao.dto.UserDTO;
 import br.municao.models.UserModel;
 import br.municao.response.SmsResponse;
 import br.municao.services.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,5 +45,19 @@ public class UserController {
     @DeleteMapping("/deletar/{id}")
     public ResponseEntity<SmsResponse> deleteUser(@PathVariable Long id){
         return userService.deleteUser(id);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> validateEmailAndSenha(@RequestBody UserCredentialsDTO userCredentialsDTO){
+        String email = userCredentialsDTO.getEmail();
+        String senha = userCredentialsDTO.getSenha();
+
+        UserModel userModel = userService.validate(email, senha);
+
+        if(userModel != null){
+            return  ResponseEntity.ok("usuario Autenticado");
+        }else{
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuario ou senha estão invalidos");
+        }
     }
 }
