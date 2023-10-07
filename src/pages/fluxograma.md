@@ -13,6 +13,12 @@
 <a href="./bancoDados.md">
     <button>➡️ Banco de Dados</button>
 </a>
+<a href="./documentacaoAPI.md">
+    <button>➡️ Documentação API</button>
+</a>
+<a href="./documentacaoAPI.md">
+    <button>➡️ Documentação API</button>
+</a>
 <hr>
 
 # FluxoGrama

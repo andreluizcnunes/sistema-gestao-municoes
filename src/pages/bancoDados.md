@@ -13,6 +13,9 @@
 <a href="./fluxograma.md">
     <button>➡️ Fluxograma</button>
 </a>
+<a href="./documentacaoAPI.md">
+    <button>➡️ Documentação API</button>
+</a>
 <hr>
 
 ## Modelo Conceitual do Banco
