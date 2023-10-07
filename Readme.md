@@ -13,7 +13,7 @@
 <a href="./src/pages/bancoDados.md">
     <button>➡️ Banco de Dados</button>
 </a>
-<a href="./documentacaoAPI.md">
+<a href="./src/pages/documentacaoAPI.md">
     <button>➡️ Documentação API</button>
 </a>
 <hr>
