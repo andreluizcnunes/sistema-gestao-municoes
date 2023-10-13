@@ -1,16 +1,13 @@
 package br.municao.services;
 
 import br.municao.models.DevolucaoMunicaoPolicalModel;
-import br.municao.models.EntradaMunicaoModel;
 import br.municao.models.MunicaoModel;
 import br.municao.repositories.DevolucaoMunicaoRepository;
 import br.municao.repositories.MunicaoRepository;
 import br.municao.response.SmsResponse;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 
 @Service
 public class DevolucaoMunicaoService {
@@ -38,5 +35,9 @@ public class DevolucaoMunicaoService {
 
         municao.setQuantidade(total);
         devolucaoMunicaoRepository.save(devolucao);
+    }
+
+    public List<DevolucaoMunicaoPolicalModel> listAllDevolucaoS(){
+        return devolucaoMunicaoRepository.findAll();
     }
 }

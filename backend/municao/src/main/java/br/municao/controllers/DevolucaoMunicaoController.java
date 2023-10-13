@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/devolucao-municao")
 @CrossOrigin(origins = "http://localhost:5173")
@@ -15,6 +17,11 @@ public class DevolucaoMunicaoController {
 
     public DevolucaoMunicaoController(DevolucaoMunicaoService devolucaoMunicaoService){
         this.devolucaoMunicaoService = devolucaoMunicaoService;
+    }
+
+    @GetMapping("/listar")
+    public List<DevolucaoMunicaoPolicalModel> listAllDevolucaoC(){
+        return devolucaoMunicaoService.listAllDevolucaoS();
     }
 
     @PostMapping("/devolucao")

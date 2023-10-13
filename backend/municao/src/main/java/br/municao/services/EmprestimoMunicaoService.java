@@ -8,6 +8,7 @@ import br.municao.models.MunicaoModel;
 import br.municao.repositories.EmprestimoMunicaoRepository;
 import br.municao.repositories.MunicaoRepository;
 import br.municao.response.SmsResponse;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,10 +35,22 @@ public class EmprestimoMunicaoService {
         long quantidadeAtual = municao.getQuantidade();
         long quantidadeNova = emprestimo.getQuantidade();
 
-        long total = quantidadeAtual - quantidadeNova;
+        if(quantidadeNova > quantidadeAtual){
+            throw new EstoqueInsuficienteException("Quantidade de munição insuficiente no estoque.");
+        }else {
+            long total = quantidadeAtual - quantidadeNova;
+            municao.setQuantidade(total);
+            emprestimoMunicaoRepository.save(emprestimo);
+        }
 
-        municao.setQuantidade(total);
-        emprestimoMunicaoRepository.save(emprestimo);
+
+
+    }
+
+    public class EstoqueInsuficienteException extends RuntimeException {
+        public EstoqueInsuficienteException(String message) {
+            super(message);
+        }
     }
 
     public List<EmprestimoDTO> getAllEmprestimoDTO(){
